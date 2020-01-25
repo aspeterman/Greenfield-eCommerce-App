@@ -1,11 +1,12 @@
-const initialState = require('./initialState.js')
+// const initialState = require('./initialState.js')
+import initialState from './initialState'
 
 
-const setInitialState = (state = initialState.products, action) => {
-  console.log(state.products)
+const productReducer = (state = initialState.products, action) => {
+  console.log(state)
   return state;
 }
 
 
 
-export default setInitialState;
+export default productReducer;

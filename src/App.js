@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
+import Reviews from './components/Reviews/reviews.jsx'
 // import NavBar from './actions/overall/NavBar.jsx'
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
       {/* <NavBar /> */}
       <header className="App-header">
       </header>
+      <Reviews />
     </div>
   );
 }

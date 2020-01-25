@@ -1,11 +1,10 @@
-export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS'
-function receivePosts(greenfield, json) {
+function receiveReviews(greenfield, item) {
   return {
-    type: RECEIVE_REVIEWS,
+    type: 'ADD_PRODUCT',
     greenfield,
-    reviews: json.data.children.map(child => child.data),
+    item: item,
+    // reviews: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
 }
-
-export default receivePosts
+export default receiveReviews;
