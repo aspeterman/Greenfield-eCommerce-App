@@ -9,7 +9,7 @@ class Modal extends Component {
         return (
             
         <div>
-          <button>Modal</button>
+          <button>Modal(make your own)</button>
         </div>
         )
     }
