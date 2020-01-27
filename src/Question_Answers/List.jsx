@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
 // import Search from '../Search'
 // import List from '../List'
@@ -7,16 +8,13 @@ import React, { Component } from 'react'
 
 
 class List extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-    
     render() {
     //  const reactState = useSelector(state => state)
         return (
             
         <div>
           <p>list</p>
+          <p>{this.state? this.state.reviews: null}</p>
         </div>
         )
     }
