@@ -30,7 +30,7 @@ class RatingsView extends Component {
     }
 
     navigateBack = () => {
-        this.props.history.push('/questions');
+        this.props.history.push('/products');
     }
     sendValueToRedux = () => {
         let action = {type: 'STYLE_RATING', payload: this.state.style};

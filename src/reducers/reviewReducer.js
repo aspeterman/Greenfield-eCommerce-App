@@ -6,7 +6,7 @@ let blankReview = {
 
 };
 const review = (state = blankReview, action ) => {
-    if(action.type === 'ADD_PRODUCT'){
+    if(action.type === 'ADD_REVIEW'){
         return {
             ...state,
             product: action.payload
@@ -26,8 +26,20 @@ const review = (state = blankReview, action ) => {
             ...state,
             overall: action.payload,
         }
+    } else if (action.type === 'CLEAR_RATING'){
+        return blankFeedback;
+    } else {
+        return state;
     }
-    return state;
 }
-
-export default review
+const home = (state = true, action) => {
+  if (action.type === 'NAV_TO_REVIEW'){
+      return false;
+  } else {
+      return state;
+  }
+}
+export default combineReducers({
+  review,
+  home
+});
