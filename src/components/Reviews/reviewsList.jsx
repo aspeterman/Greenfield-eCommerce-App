@@ -7,8 +7,6 @@ class RatingsView extends Component {
     constructor(){
         super();
     this.state = {
-
-      fit: 0,
             fit: 0,
             style: 0,
             overall: 0,
@@ -46,14 +44,14 @@ class RatingsView extends Component {
     render(){
         return(
             <div className="main">
-                      <div className="main">
+                    <div className="main">
                 <div className="flex-box flex-evenly form-zone animate-pop-in">
                     <div className="column-4">
                         <Dialog open={this.state.open} onClose={this.handleClose}>
                             <div className="dialog">
                                 <div className="flex-box flex-end close-icon" onClick={this.handleClose}>x</div>
 
-                                  <div><h3>Photo</h3><img src='' /></div>
+                                <div><h3>Photo</h3><img src='' /></div>
                             </div>
                         </Dialog>
                     </div>

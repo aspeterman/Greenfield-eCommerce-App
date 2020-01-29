@@ -19,10 +19,10 @@ class TableComponent extends Component {
             const action = {type: 'SET_HISTORY', payload: productReviewHistory};
             this.props.dispatch(action);
         }).catch((error) => {
-            console.log('Error setting meal review history', error);
+            console.log('Error setting product review history', error);
         })
     }
-     sortBy = (type) => {
+    sortBy = (type) => {
         toggleOrder.toggle = !toggleOrder.toggle;
         axios({
             method: 'PUT',
@@ -51,9 +51,9 @@ class TableComponent extends Component {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {this.props.reduxStore.productReviewHistory.map((dinner, i)=>{
+                    {this.props.reduxStore.productReviewHistory.map((product, i)=>{
                 return (
-                    <TableRowComponent i={i} dinner={dinner}/>
+                    <TableRowComponent i={i} product={product}/>
                         );
                     })}
                 </TableBody>
