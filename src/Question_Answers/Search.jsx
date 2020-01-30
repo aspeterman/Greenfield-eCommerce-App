@@ -13,8 +13,7 @@ class Search extends Component {
             <button>search</button>
             </form>
         </div>
-        
-                    )
+         )
                 }
             }
 export default Search;
