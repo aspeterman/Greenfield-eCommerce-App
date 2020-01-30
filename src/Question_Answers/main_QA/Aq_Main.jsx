@@ -18,6 +18,7 @@ class Aq_Main extends Component {
             
         <div>
             <h1>Questions and answers</h1>
+            <p>{this.props.state}</p>
             {/* <p>this is state:{reactState}</p> */}
             <Search/>
             <List/>

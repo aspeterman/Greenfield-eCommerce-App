@@ -5,6 +5,6 @@ import questionReducer from "./questionReducer.js"
 
 export default combineReducers({
   productReducer,
-  cart,
+   cart,
   questionReducer
 });
