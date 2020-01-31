@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 // import  recieveReviews  from '../actions/fetch-reviews.js';
 // import store from '../store/store.js';
-import initialState from '../reducers/initialState'
+
+import initialState from '../../reducers/initialState'
 
 // import Search from './Search'
 // import List from '../List'
 //  import Modal from './Modal'
 // import {useSelector} from 'react-redux'
+
 
 
 class List extends Component {
@@ -16,6 +18,7 @@ class List extends Component {
         return (
         <div>
           <ul id='question'>
+            
             {initialState.questions[0].results.map((each) => { return(
           <li>{`Q: ${each["question_body"]}`}&nbsp;&nbsp;
           <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<a href="#">add answer</a><br></br>
