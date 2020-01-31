@@ -1,5 +1,6 @@
 // const React = require('react')
 import React, { Component } from 'react'
+import Button from '@material-ui/core/Button';
 
 import Search from '../Search'
 import List from '../List'
@@ -23,8 +24,10 @@ class Aq_Main extends Component {
             <Search/>
             <List/>
             <div>
-                <Modal/>
-                    <button>more answered questions</button>
+            {/* <ButtonGroup color="primary" aria-label="outlined primary button group"> */}
+             <Button variant="contained" variant="outlined">more answered questions</Button>
+             <Modal/>
+            {/* </ButtonGroup> */}
              </div>
 
         </div>
