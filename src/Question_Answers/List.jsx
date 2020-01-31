@@ -15,21 +15,20 @@ class List extends Component {
     //  const reactState = useSelector(state => state)
         return (
         <div>
-          <p>list</p>
           <ul id='question'>
-            {initialState.questions[0].results.map((each) => 
-        <li>{`Question: ${each["question_body"]}`}<br></br>
-              <ul id='answer'>     
-              <li>{`Answer: ${initialState.questions[0].results[0]["answers"]["46"]["body"]}`}</li>
-              <li>{`by${initialState.questions[0].results[0]["answers"]["46"]["date"]},${initialState.questions[0].results[0]["answers"]["46"]["answerer_name"]}| helpful? `}<a href="#">yes</a>{`(${initialState.questions[0].results[0]["answers"]["46"]["helpfulness"]})|`}<a href="#">Report</a></li>
-              <li>{console.log(initialState.questions[0].results)}</li>
-              <li>{console.log("each:",each["answers"])}</li>
-              </ul>    
+            {initialState.questions[0].results.map((each) => { return(
+          <li>{`Q: ${each["question_body"]}`}&nbsp;&nbsp;
+          <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<a href="#">add answer</a><br></br>
+              <ul id='answer'> 
+              {Object.keys(each["answers"]).map((every) => 
+               <li>{`A: ${each["answers"][every]["body"]}`}<br></br>
+              {`by${each["answers"][every]["date"]},${each["answers"][every]["answerer_name"]}| helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]})|`}<a href="#">Report</a><br></br></li>
+              )}
+              <a href="#">Load more answers</a><br></br> 
+              </ul> 
+              
         </li>
-         )}
-          
-           
-
+            )})}
           </ul>
           <p>{this.state? this.state.reviews: null}</p>
         </div>
