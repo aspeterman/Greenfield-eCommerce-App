@@ -44,14 +44,14 @@ class TableComponent extends Component {
                 <TableHead>
                     <TableRow>
                         <TableCell><TableSortLabel onClick={()=> this.sortBy("name")}>Name</TableSortLabel></TableCell>
-                        <TableCell><TableSortLabel onClick={()=> this.sortBy("product")}>Product</TableSortLabel></TableCell>
-                        <TableCell><TableSortLabel onClick={()=> this.sortBy("date")}>Date</TableSortLabel></TableCell>
-                        <TableCell><TableSortLabel onClick={()=> this.sortBy("overall_rating")}>Overall Rating</TableSortLabel></TableCell>
+                        <TableCell><TableSortLabel onClick={()=> this.sortBy("fit")}>Fit</TableSortLabel></TableCell>
+                        <TableCell><TableSortLabel onClick={()=> this.sortBy("style")}>Style</TableSortLabel></TableCell>
+                        <TableCell><TableSortLabel onClick={()=> this.sortBy("overall")}>Overall Rating</TableSortLabel></TableCell>
                         <TableCell>Delete</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {this.props.reduxStore.productReviewHistory.map((product, i)=>{
+                    {this.props.storage.productReviewHistory.map((product, i)=>{
                 return (
                     <TableRowComponent i={i} product={product}/>
                         );
@@ -63,7 +63,7 @@ class TableComponent extends Component {
         );
     }
 }
-const mapReduxStoreToProps = (reduxStore) => ({
-    reduxStore
+const mapStoreToProps = (storage) => ({
+    storage
 });
-export default connect(mapReduxStoreToProps)(TableComponent);
+export default connect(mapStoreToProps)(TableComponent);
