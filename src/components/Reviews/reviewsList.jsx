@@ -7,12 +7,13 @@ class RatingsView extends Component {
     constructor(){
         super();
     this.state = {
+        products:{
             fit: 0,
             style: 0,
             overall: 0,
             image: '',
             open: false,
-
+        }
         }
     }
     handleClose = () => {
@@ -29,17 +30,13 @@ class RatingsView extends Component {
         });
     }
 
-    navigateBack = () => {
-        this.props.history.push('/products');
-    }
-    sendValueToRedux = () => {
-        let action = {type: 'STYLE_RATING', payload: this.state.style};
+    sendValueToStorage = () => {
+        let action = {type: 'STYLE_RATING', payload: this.state.products.style};
         this.props.dispatch(action);
-        action = {type: 'FIT_RATING', payload: this.state.fit};
+        action = {type: 'FIT_RATING', payload: this.state.products.fit};
         this.props.dispatch(action);
-        action = {type: 'OVERALL_RATING', payload: this.state.overall};
+        action = {type: 'OVERALL_RATING', payload: this.state.products.overall};
         this.props.dispatch(action);
-        this.props.history.push('/review');
     }
     render(){
         return(
@@ -59,16 +56,16 @@ class RatingsView extends Component {
                             <h4>Rate Our Product</h4>
                             <p>Please rank our product for each category listed below on a scale from 0 (worst)  - 5 (best).</p>
                             <div>
-                            <label>style of product: {this.state.style}/5</label> <input value={this.state.style} onChange={(event)=>this.handleRangeChangeFor(event, 'style')} type="range" min="0" max="5" required/>
+                            <label>style of product: {this.state.style}/5</label> <input value={this.state.products.style} onChange={(event)=>this.handleRangeChangeFor(event, 'style')} type="range" min="0" max="5" required/>
                             </div>
                             <div className="flex-col slider-div column-12">
-                            <label>fit of product: {this.state.fit}/5</label> <input value={this.state.fit} onChange={(event)=>this.handleRangeChangeFor(event, 'fit')} className="slider column-8" type="range" min="0" max="5" required/>
+                            <label>fit of product: {this.state.fit}/5</label> <input value={this.state.products.fit} onChange={(event)=>this.handleRangeChangeFor(event, 'fit')} className="slider column-8" type="range" min="0" max="5" required/>
                             </div>
                             <div className="flex-col slider-div column-12">
-                            <label>Overall impression of product: {this.state.overall}/5</label> <input value={this.state.overall} onChange={(event)=>this.handleRangeChangeFor(event, 'overall')} className="slider column-8" type="range" min="0" max="5" required/>
+                            <label>Overall impression of product: {this.state.overall}/5</label> <input value={this.state.products.overall} onChange={(event)=>this.handleRangeChangeFor(event, 'overall')} className="slider column-8" type="range" min="0" max="5" required/>
                             </div>
                             <div className="flex-box flex-center margin-top-15">
-                            <Button variant="contained" color="secondary" onClick={()=>this.sendValueToRedux()}>Submit</Button>
+                            <Button variant="contained" color="primary" onClick={()=>this.sendValueToStorage()}>Submit</Button>
                             </div>
                         </div>
                     </div>
@@ -77,7 +74,7 @@ class RatingsView extends Component {
         );
     }
 }
-const mapReduxStoreToProps = (reduxStore) => ({
-    reduxStore
+const mapStoreToProps = (storage) => ({
+    storage
 });
-export default connect(mapReduxStoreToProps)(RatingsView);
+export default connect(mapStoreToProps)(RatingsView);

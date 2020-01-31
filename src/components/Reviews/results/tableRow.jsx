@@ -1,57 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import axios from 'axios';
 import {TableCell, TableRow} from '@material-ui/core';
-import Delete from '@material-ui/icons/Delete';
-import moment from 'moment';
 
 class TableBodyComponent extends Component {
-    componenTableCellidMount(){
-        this.getCurrentRatingData();
-    }
-    // getCurrentRatingData gets all data
-    getCurrentRatingData = () => {
-    axios({
-        method: 'GET',
-        url: '/review'
-    }).then((response) => {
-        const ratings = response.data;
-        const action = {type: 'SET_HISTORY', payload: ratings};
-        this.props.dispatch(action);
-    }).catch((error) => {
-        console.log('Error getting current ratings data', error);
-    })
-} // gets the latest ratings data, dispatches that to the redux store
-
-    handleDelete = () => {
-        if (window.confirm(`Are you sure you want to delete ${this.props.product.review}?`)){
-            let id = this.props.product.id;
-            axios({
-                method: 'DELETE_REVIEW',
-                url: '/review/' + id,
-            }).then((response)=>{
-                this.getCurrentRatingData();
-            }).catch((error) => {
-                alert('Error deleting!');
-                console.log('Error deleting item', error);
-            })
-        }
-    }
 
 render(){
     return (
                 <TableRow className={this.props.product.flagged.toString()} key={this.props.id}>
                     <TableCell>{this.props.product.name}</TableCell>
-                    <TableCell>{this.props.product.review}</TableCell>
-                    <TableCell>{moment(this.props.product.date).format('MM/DD/YYYY')}</TableCell>
-                    <TableCell>{this.props.product.overall_rating}</TableCell>
-                    <TableCell><img src="" alt=""></img></TableCell>
-                    <TableCell><Delete onClick={this.handleDelete}/></TableCell>
+                    <TableCell>{this.props.product.fit}</TableCell>
+                    <TableCell>{this.props.product.style}</TableCell>
+                    <TableCell>{this.props.product.overall}</TableCell>
+                    <TableCell><img src="" alt="product-image"></img></TableCell>
                 </TableRow>
         );
     }
 }
-const mapReduxStoreToProps = (reduxStore) => ({
-    reduxStore
+const mapStoreToProps = (storage) => ({
+    storage
 });
-export default connect(mapReduxStoreToProps)(TableBodyComponent);
+export default connect(mapStoreToProps)(TableBodyComponent);

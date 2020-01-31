@@ -1,7 +1,7 @@
 const axios = require('axios');
 // var reduxPromise = require("redux-promise")
 
-//regular 
+//regular
 //___________________________________________________________________
 // const initialState =  axios.get("http://52.26.193.201:3000/products/list").then((something)=>{ console.log(something['data']); return something['data']})
 
@@ -66,7 +66,44 @@ const axios = require('axios');
 
 //_____example data _______________________
 const initialState = {
-  questions :[{
+    name: '',
+    cart: [],
+    products: [
+        {
+        id: 1,
+        name: 'Nike',
+        price: 3000,
+        reviews: [{
+            fit: 1,
+            style: 1,
+            overall: 1
+        }],
+        imageUrl: require('../assets/images/Nike.jpg')
+        },
+        {
+        id: 2,
+        name: 'Socialite',
+        price: 1000,
+        reviews: [{
+            fit: 1,
+            style: 1,
+            overall: 1
+        }],
+        imageUrl: require('../assets/images/Socialite.jpg')
+        },
+        {
+        id: 3,
+        name: 'Denim',
+        price: 10,
+        reviews: [{
+            fit: 1,
+            style: 1,
+            overall: 1
+        }],
+        imageUrl: require('../assets/images/Denim.jpg')
+        }
+    ],
+    questions :[{
     "product_id": "1",
     "results": [
         {
@@ -220,28 +257,8 @@ const initialState = {
             "reported": 0,
             "answers": {}
         }
-    ]
+    ],
 }],
-  cart: [],
-  products: [
-    {
-      id: 1,
-      name: 'what',
-      price: 3000,
-      reviews: 39,
-    },
-    {
-      id: 2,
-      name: 'who',
-      price: 1000,
-      reviews: 3
-    },
-    {
-      id: 3,
-      name: 'why?',
-      price: 10,
-      reviews: 98
-    }
-  ]
+
 }
 export default  initialState
