@@ -42,8 +42,8 @@ class Search extends Component {
         </FormControl> */}
             <form>
             <TextField id="standard-basic" label="Standard" position="end"/>
-            <input   value="Have a question?Search for answer..."></input>
-            <button>search</button>
+            <input   placeholder="Have a question?Search for answer..."></input>
+            <button>{"search"}</button>
             </form>
         </div>
          )
