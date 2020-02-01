@@ -37,7 +37,7 @@ class HomeView extends Component {
 
                         <p>To get started, please enter your name.</p>
                         <div className="flex-box flex-center">
-                            <FormControl>
+                            <FormControl >
                                 <Input aria-label="name" className="margin-top-15" placeholder="Enter your name" value={this.state.name} onChange={this.handleNameChange} required /> <br /><br />
                                 <Button color="primary" variant="contained" onClick={this.submitName}>Submit</Button>
                             </FormControl>

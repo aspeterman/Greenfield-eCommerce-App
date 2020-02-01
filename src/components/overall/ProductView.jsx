@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Dialog } from '@material-ui/core';
 import Header from './Header';
+import ReviewsList from '../Reviews/reviewsList.jsx'
 
 class ProductView extends Component {
     constructor() {
@@ -54,7 +55,7 @@ class ProductView extends Component {
                 <Dialog open={this.state.open} onClose={this.handleClose}>
                     <div className="dialog">
                         <div className="flex-box flex-end close-icon" onClick={this.handleClose}>x</div>
-                    <div><h3>photo</h3><img className="full-img" src={require(`./${this.state.image.image}`)} alt="demo"/></div>)}
+                    <div><h3>photo</h3><img className="full-img" src={require(`./${this.state.image.image}`)} alt="demo"/><ReviewsList  /></div>
                     </div>
               </Dialog>
                   </div>
@@ -67,9 +68,9 @@ class ProductView extends Component {
                 </div>}
             </div>
 
-        );
-    }
-}
+        )}}
+
+
 const mapStoreToProps = (storage) => ({
     storage
 });
