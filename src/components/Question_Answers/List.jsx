@@ -18,22 +18,22 @@ class List extends Component {
         return (
         <div>
           <ul id='question'>
-            
-            {initialState.questions[0].results.map((each) => { return(
+
+            {initialState.products[0].questions ? initialState.products[0].questions[0].results.map((each) => { return(
           <li>{`Q: ${each["question_body"]}`}&nbsp;&nbsp;
           <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<a href="#">add answer</a><br></br>
-              <ul id='answer'> 
-              {Object.keys(each["answers"]).map((every,i) => 
+              <ul id='answer'>
+              {Object.keys(each["answers"]).map((every,i) =>
                <li key ={i}>{`A: ${each["answers"][every]["body"]}`}<br></br>
               {`by${each["answers"][every]["date"]},${each["answers"][every]["answerer_name"]}| helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]})|`}<a href="#">Report</a><br></br></li>
               )}
-              <a href="#">Load more answers</a><br></br> 
-              </ul> 
-              
+              <a href="#">Load more answers</a><br></br>
+              </ul>
+
         </li>
-            )})}
+            )}): null}
           </ul>
-          <p>{this.state? this.state.reviews: null}</p>
+          {/* <p>{this.state? this.state.reviews: null}</p> */}
         </div>
         )
     }

@@ -1,6 +1,6 @@
 function receiveReviews(greenfield, item) {
   return {
-    type: 'ADD_REVIEW',
+    type: 'FETCH_REVIEWS',
     greenfield,
     item: item,
     // reviews: json.data.children.map(child => child.data),
