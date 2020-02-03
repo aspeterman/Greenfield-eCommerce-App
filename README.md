@@ -1,4 +1,4 @@
-This Project is a clone of an E-Commerce site. Developed with User Story focused tickets.  
+This Project is a mock up of an E-Commerce site. Developed with User Story focused tickets.  
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
