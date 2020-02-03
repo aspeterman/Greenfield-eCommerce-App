@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import AnswerModal from './AnswerModal.jsx'
 // import  recieveReviews  from '../actions/fetch-reviews.js';
 // import store from '../store/store.js';
 
@@ -21,7 +22,7 @@ class List extends Component {
 
             {initialState.products[0].questions ? initialState.products[0].questions[0].results.map((each) => { return(
           <li>{`Q: ${each["question_body"]}`}&nbsp;&nbsp;
-          <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<a href="#">add answer</a><br></br>
+          <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<AnswerModal/><br></br>
               <ul id='answer'>
               {Object.keys(each["answers"]).map((every,i) =>
                <li key ={i}>{`A: ${each["answers"][every]["body"]}`}<br></br>
