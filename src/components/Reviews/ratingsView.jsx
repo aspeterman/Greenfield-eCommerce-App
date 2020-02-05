@@ -1,14 +1,14 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Button, Dialog} from '@material-ui/core';
+import {Button } from '@material-ui/core';
+// import CloseIcon from '@material-ui/icons/Close'
+
 
 class RatingsView extends Component {
     constructor(){
         super();
     this.state = {
-        examples: [{image: 'Nike.jpg'}, {image: 'Denim.jpg'}],
-        name: '',
         fit: 0,
         style: 0,
         overall: 0,
@@ -16,13 +16,14 @@ class RatingsView extends Component {
         open: false,
         }
     }
-    handleClose = () => {
-        this.setState({
-            ...this.state,
-            open: false,
-            image: ''
-        })
-    }
+    // handleClose = () => {
+    //     this.setState({
+    //         ...this.state,
+    //         open: false,
+    //         image: '',
+    //         name: ''
+    //     })
+    // }
 
     handleRangeChangeFor = (event, property) => {
         this.setState({
@@ -30,15 +31,12 @@ class RatingsView extends Component {
             [property]: event.target.value,
         });
     }
-    selectProduct = (example) => {
-        this.props.dispatch({ type: 'CHOOSE_PRODUCT', payload: example });
-        this.setState({
-            ...this.state,
-            selected: example
-        })
-    }
 
-    sendValueToStorage = () => {
+
+
+
+    sendValueTostate = () => {
+        if(!this.selectProduct) console.log('error')
         let action = {type: 'STYLE_RATING', payload: this.state.style};
         this.props.dispatch(action);
         action = {type: 'FIT_RATING', payload: this.state.fit};
@@ -46,30 +44,16 @@ class RatingsView extends Component {
         action = {type: 'OVERALL_RATING', payload: this.state.overall};
         this.props.dispatch(action);
         console.log(this.state)
+        console.log(this.props)
     }
     render(){
         return(
             <div className="main">
                     <div className="main">
                 <div className="flex-box flex-evenly form-zone animate-pop-in">
-                    <div className="column-4">
-                        <Dialog open={this.state.open} onClose={this.handleClose}>
-                            <div className="dialog">
-                                <div className="flex-box flex-end close-icon" onClick={this.handleClose}>x</div>
-                                {this.state.examples.map((ex, i) => {
-                                return (
-                                    <div className="thumbnail" key={i}>
 
-                                        (<div className="flex-col selected-image">
-                                            <img src={require(`../overall/${ex.image}`)} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`review-${i + 1}`} />
+                    <div className="column-4 column-md-8">
 
-                                            <Button onClick={() => this.selectProduct(ex)}>undo</Button>
-                                            </div>)
-                                    </div>
-                                )
-                                })}
-                            </div>
-                        </Dialog>
                     </div>
                         <div className="ratings">
                             <h4>Rate Our Product</h4>
@@ -88,13 +72,13 @@ class RatingsView extends Component {
                             <label>Overall impression of product: {this.state.overall}/5</label> <input value={this.state.overall} onChange={(event)=>this.handleRangeChangeFor(event, 'overall')} className="slider column-8" type="range" min="0" max="5" required/>
                             </div>
                             <div className="flex-box flex-center margin-top-15">
-                            <Button variant="contained" color="primary" onClick={()=>this.sendValueToStorage()}>Submit</Button>
+                            <Button variant="contained" color="primary" onClick={()=>this.sendValueTostate()}>Submit</Button>
                             </div>
                         </div>
                     </div>
             </div>
             </div>
-        );
+                                    );
     }
 }
 const mapStoreToProps = (storage) => ({
