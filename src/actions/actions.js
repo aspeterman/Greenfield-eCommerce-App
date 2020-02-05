@@ -1,17 +1,17 @@
 
 
-function fetchReviewsPending(reviews) {
+function fetchReviewsSuccess(reviews) {
   return {
-    type: 'FETCH_REVIEWS_PENDING',
+    type: 'FETCH_REVIEWS',
     reviews: reviews,
     // reviews: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
 }
 
-function fetchReviewsSuccess(reviews) {
+function fetchReviewsPending(reviews) {
   return {
-      type: 'FETCH_REVIEWS',
+      type: 'FETCH_REVIEWS_PENDING',
       reviews: reviews
   }
 }

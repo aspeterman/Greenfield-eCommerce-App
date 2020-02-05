@@ -9,10 +9,10 @@ class TableBodyComponent extends Component {
 render(){
     return (
                 <TableRow className={this.props.product} key={this.props.id}>
-                    <TableCell>{this.props.products.name}</TableCell>
-                    <TableCell>{this.props.products.fit}</TableCell>
-                    <TableCell>{this.props.products.style}</TableCell>
-                    <TableCell>{this.props.products.overall}<RatingSymbol /></TableCell>
+                    <TableCell>{this.props.reviews.name}</TableCell>
+                    <TableCell>{this.props.reviews.fit}</TableCell>
+                    <TableCell>{this.props.reviews.style}</TableCell>
+                    <TableCell>{this.props.reviews.overall}<RatingSymbol /></TableCell>
                     <TableCell><img src="" alt="product"></img></TableCell>
                 </TableRow>
         );

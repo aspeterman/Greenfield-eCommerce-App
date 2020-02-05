@@ -10,7 +10,7 @@ let blankFeedback = {
 
 };
 
-const review = (state = initialState, action ) => {
+const reviewReducer = (state = initialState, action ) => {
     if(type === 'ADD_NAME'){
     return {
         ...state,
@@ -64,13 +64,7 @@ const review = (state = initialState, action ) => {
         return state;
     }
 }
-// const home = (state = true, action) => {
-//     if (type === 'NAV_TO_REVIEW'){
-//         return false;
-//     } else {
-//         return state;
-//     }
-// }
+
 
 export const getReviews = state => state.reviewList;
 export const getReviewsPending = state => state.pending;
@@ -80,4 +74,4 @@ export const getStyle = state => state.style;
 export const getFit = state => state.fit;
 export const getOverall = state => state.overall;
 
-export default review
+export default reviewReducer

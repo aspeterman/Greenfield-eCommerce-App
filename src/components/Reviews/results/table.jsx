@@ -13,21 +13,21 @@ const toggleOrder = {toggle: false};
 
 class TableComponent extends Component {
     componentDidMount(){
-        this.reviewHistory();
+        // this.fetchReviews();
     }
 
-    reviewHistory = () => {
-        axios({
-            method: 'GET',
-            url: '/http://http//52.26.193.201:3000//reviews/:product_id/list'
-        }).then((response) => {
-            const reviewProductHistory = response.data;
-            const action = {type: 'FETCH_REVIEWS', payload: reviewProductHistory};
-            this.props.dispatch(action);
-        }).catch((error) => {
-            console.log('Error setting review history', error);
-        })
-    }
+    // reviewHistory = () => {
+    //     axios({
+    //         method: 'GET',
+    //         url: '/http://http//52.26.193.201:3000//reviews/:product_id/list'
+    //     }).then((response) => {
+    //         const reviewProductHistory = response.data;
+    //         const action = {type: 'FETCH_REVIEWS', payload: reviewProductHistory};
+    //         this.props.dispatch(action);
+    //     }).catch((error) => {
+    //         console.log('Error setting review history', error);
+    //     })
+    // }
 
     sortBy = (type) => {
         toggleOrder.toggle = !toggleOrder.toggle;
@@ -57,6 +57,7 @@ class TableComponent extends Component {
 
     loadReviews = () => {
         let action = {type: 'FETCH_REVIEWS', payload: this.props}
+        console.log(this.fetchReviews)
         this.props.dispatch(action)
     }
     render(){
@@ -80,7 +81,7 @@ class TableComponent extends Component {
                     })} */}
                 </TableBody>
             </Table>
-            {this.loadReviews()}
+            {this.fetchReivews()}
             </Grid>
         );
     }
@@ -96,7 +97,7 @@ const mapStorageToProps = (storage) => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    reviewHistory: this.reviewHistory
+    fetchReviews
 }, dispatch)
 
-export default connect(mapStorageToProps)(TableComponent);
+export default connect(mapDispatchToProps)(TableComponent);
