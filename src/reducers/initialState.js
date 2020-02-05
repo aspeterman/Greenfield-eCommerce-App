@@ -65,18 +65,19 @@
 
 //_____example data _______________________
 const initialState = {
-    isRefreshing: false,
-    loading: false,
-    isLoadMore: false,
-    noMore: false,
-    reviewList: {},
-    reviewAfter: {1: '', 2: ''},
     //------------------------------------------------------
     name: '',
     cart: [],
     products: [
         {
-        id: 1,
+            id: 1,
+            reviewList: {},
+            reviewAfter: {1: '', 2: ''},
+        ratings: [{
+            fit: 1,
+            style: 1,
+            overall: 1,
+        }],
         name: 'Nike',
         price: 3000,
         questions :[{
@@ -234,15 +235,13 @@ const initialState = {
                 }
             ],
         }],
-        // reviews: [{
-            fit: 1,
-            style: 1,
-            overall: 1,
-        // }],
+
         imageUrl: require('../assets/images/Nike.jpg')
         },
         {
         id: 2,
+        reviewList: {},
+        reviewAfter: {1: '', 2: ''},
         name: 'Socialite',
         price: 1000,
         questions: [{
@@ -269,11 +268,11 @@ const initialState = {
                 }
             }]
         }],
-        // reviews: [{
+        ratings: [{
             fit: 1,
             style: 1,
             overall: 1,
-        // }],
+        }],
         imageUrl: require('../assets/images/Socialite.jpg')
         },
         {
@@ -305,11 +304,13 @@ const initialState = {
         }],
 
         price: 10,
-        // reviews: [{
+        reviewList: {},
+        reviewAfter: {1: '', 2: ''},
+        ratings: [{
             fit: 1,
             style: 1,
             overall: 1,
-        // }],
+        }],
         imageUrl: require('../assets/images/Denim.jpg')
         }
     ],

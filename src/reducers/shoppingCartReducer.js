@@ -1,64 +1,118 @@
-import initialState from './initialState.js'
-// import P from '../actions/constants.js'
+// import initialState from './initialState.js'
+// import { combineReducers } from 'redux'
+// import { FETCH_REVIEWS, REVIEW_PRODUCT, ADD_PRODUCT, REMOVE_REVIEW } from '../actions/constants.js'
 
-// const cart = (state = [], action) => {
+// import * as types from '../actions/constants.js'
+
+// const reviewReducer = function(state = initialState, action) {
 //   switch (action.type) {
-//   case P.ADD_PRODUCT :
-//     return [
-//     ...state,
-//     cart({}, action)
-//     ]
-//   case P.RATE_PRODUCT :
-//     return state.map(
-//     p => cart(p, action)
-//     )
-//   case P.REMOVE_PRODUCT :
-//     return state.filter(
-//     p => p.id !=== action.id
-//     )
+//   case types.FETCH_REVIEWS:
+//       return Object.assign({}, state, {
+//       isRefreshing: action.isRefreshing,
+//       loading: action.loading,
+//       isLoadMore: action.isLoadMore
+//       });
+//   case types.FETCH_REVIEWS:
+//       return Object.assign({}, state, {
+//       isRefreshing: false,
+//       isLoadMore: false,
+//       noMore: action.reviewData.children.length === 0,
+//       reviewList: state.isLoadMore ? loadMore(state, action) : combine(state, action),
+//       loading: state.reviewList[action.typeId] === undefined
+//       });
 //   default:
-//   return state
+//       return state;
 //   }
-//  }
+// }
 
-//  export default cart
-import * as types from '../actions/constants.js'
 
-const reviewReducer = function(state = initialState, action) {
-  switch (action.type) {
-  case types.FETCH_REVIEWS:
-      return Object.assign({}, state, {
-      isRefreshing: action.isRefreshing,
-      loading: action.loading,
-      isLoadMore: action.isLoadMore
-      });
-  case types.RECEIVE_REVIEWS:
-      return Object.assign({}, state, {
-      isRefreshing: false,
-      isLoadMore: false,
-      noMore: action.reviewData.children.length === 0,
-      reviewList: state.isLoadMore ? loadMore(state, action) : combine(state, action),
-      loading: state.reviewList[action.typeId] === undefined
-      });
-  default:
-      return state;
-  }
-}
+// function combine (state, action) {
+//   state.reviewList[action.typeId] = action.reviewData.children;
+//   state.reviewAfter[action.typeId] = action.after;
+//   return state.reviewList;
+// }
 
-function combine (state, action) {
-  state.reviewList[action.typeId] = action.reviewData.children;
-  state.redditAfter[action.typeId] = action.after;
-  // console.info('after=', state.after);
-  return state.reviewList;
-}
+// function loadMore (state, action) {
+//   state.reviewList[action.typeId] = state.reviewList[action.typeId].concat(action.reviewData.children);
+//   state.reviewAfter[action.typeId] = action.after;
+//   state.after = action.after;
+//   console.error('after=', action.reviewData.after);
+//   console.error(state.reviewList);
+//   return state.reviewList;
+// }
 
-function loadMore (state, action) {
-  state.reviewList[action.typeId] = state.reviewList[action.typeId].concat(action.reviewData.children);
-  state.reviewAfter[action.typeId] = action.after;
-  state.after = action.after;
-  console.error('after=', action.reviewData.after);
-  console.error(state.reviewList);
-  return state.reviewList;
-}
+// switch (action.type) {
+//   case REQUEST_POST_BODY:
+//     let id = action.id;
+//     return {
+//       ...state,
+//       [id]: {...state[id], isFetching: true }
+//     };
+//   case RECEIVE_POST_BODY:
+//     // let id = action.id;
+//     return {
+//       ...state,
+//       [id]: {
+//         ...state[id],
+//         isFetching: false,
+//         body: action.body
+//       }
+//     };
+//   default:
+//     return state;
+//   }
 
-export default reviewReducer
+
+
+
+// // function byId(state = {}, action) {
+// //   switch (action.type) {
+// //     case FETCH_REVIEWS:
+// //       return {
+// //         ...state,
+// //         ...action.products.reduce((obj, product) => {
+// //           obj[product.id] = product
+// //           return obj
+// //         }, {}),
+// //       }
+// //     default:
+// //       const { productId } = action
+// //       if (productId) {
+// //         return {
+// //           ...state,
+// //           [productId]: products(state[productId], action),
+// //         }
+// //       }
+// //       return state
+// //   }
+// // }
+
+// // function visibleReviews(state = [], action) {
+// //   switch (action.type) {
+// //     case FETCH_REVIEWS:
+// //       return action.products.map(product => product.id)
+// //     default:
+// //       return state
+// //   }
+// // }
+
+
+
+// // export function getProduct(state, id) {
+// //   return state.byId[id]
+// // }
+
+// // export function getVisibleProducts(state) {
+// //   return state.visibleReviews.map(id => getProduct(state, id))
+// // }
+
+// export default combineReducers({
+//   // byId,
+//   // visibleReviews,
+//   reviewReducer
+// })
+
+
+
+
+
