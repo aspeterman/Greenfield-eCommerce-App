@@ -1,16 +1,14 @@
 import initialState from "./initialState";
 import * as type from '../actions/constants.js';
 
+let blankFeedback = {
+    name: '',
+    product: '',
+    fit: 0,
+    style: 0,
+    overall: 0,
 
-// const initialState = {
-//   isRefreshing: false,
-//   loading: false,
-//   isLoadMore: false,
-//   noMore: false,
-//   reVIEWList: {},
-//   reVIEWAfter: {1: '', 2: '', 3: '', 4: ''}
-// };
-
+};
 
 const review = (state = initialState, action ) => {
     if(type === 'ADD_NAME'){
@@ -23,10 +21,27 @@ const review = (state = initialState, action ) => {
         ...state,
         product: action.payload,
     };
+    } else if(type === 'FETCH_PRODUCTS_PENDING'){
+    return {
+        ...state,
+        pending: true
+    }
+    } else if(type === 'FETCH_REVIEWS') {
+    return {
+        ...state,
+        pending: false,
+        products: action.payload
+    }
+    } else if(type === 'FETCH_REVIEWS_ERROR') {
+    return {
+        ...state,
+        pending: false,
+        error: action.error
+    }
     } else if(type === 'ADD_REVIEW'){
         return {
             ...state,
-            product: action.payload
+            reviewList: action.payload
         };
     } else if (type === 'FIT_RATING') {
         return {
@@ -44,7 +59,7 @@ const review = (state = initialState, action ) => {
             overall: action.payload,
         }
     } else if (type === 'CLEAR_RATING'){
-        return initialState;
+        return blankFeedback;
     } else {
         return state;
     }
@@ -56,4 +71,13 @@ const review = (state = initialState, action ) => {
 //         return state;
 //     }
 // }
+
+export const getReviews = state => state.reviewList;
+export const getReviewsPending = state => state.pending;
+export const getReviewsError = state => state.error;
+export const chooseProduct = state => state.product;
+export const getStyle = state => state.style;
+export const getFit = state => state.fit;
+export const getOverall = state => state.overall;
+
 export default review

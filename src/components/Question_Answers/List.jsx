@@ -24,7 +24,7 @@ class List extends Component {
           <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<a href="#">add answer</a><br></br>
               <ul id='answer'>
               {Object.keys(each["answers"]).map((every,i) =>
-               <li key ={i}>{`A: ${each["answers"][every]["body"]}`}<br></br>
+               <li key ={i+1}>{`A: ${each["answers"][every]["body"]}`}<br></br>
               {`by${each["answers"][every]["date"]},${each["answers"][every]["answerer_name"]}| helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]})|`}<a href="#">Report</a><br></br></li>
               )}
               <a href="#">Load more answers</a><br></br>
