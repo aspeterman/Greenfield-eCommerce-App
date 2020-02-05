@@ -101,13 +101,13 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     maxWidth: '100%',
-    
-    
+
+
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
     display: 'block',
-  
+
   },
   typography: {
     fontSize: 5,
@@ -118,7 +118,6 @@ const useStyles = makeStyles(theme => ({
 export default function FolderList() {
   const classes = useStyles();
 
-<<<<<<< HEAD
 // import Search from './Search'
 // import List from '../List'
 //  import Modal from './Modal'
@@ -155,15 +154,15 @@ class List extends Component {
   return (
     <div>
     <List className={classes.root}>
-    {initialState.products[0].questions ? initialState.products[0].questions[0].results.map((each) => { return( 
+    {initialState.products[0].questions ? initialState.products[0].questions[0].results.map((each) => { return(
       <ListItem alignItems="flex-start">
       <ListItemText
-     primary={`Q: ${each["question_body"]}`} 
+     primary={`Q: ${each["question_body"]}`}
       secondary={
         <React.Fragment>
-        
-        {Object.keys(each["answers"]).map((every) => 
-       
+
+        {Object.keys(each["answers"]).map((every) =>
+
           <Typography variant="subtitle1" >
          <Typography color="textPrimary">A:</Typography>{`${each["answers"][every]["body"]}`}<br></br>
          {each["answers"][every]['photos'].length > 0?each["answers"][every]['photos'].map((photo,i)=>
@@ -177,21 +176,21 @@ class List extends Component {
            )}
            {Object.keys(each["answers"]).length > 0? <a href="#">Load more answers</a>:<p>no answers yet</p>}
         </React.Fragment>
-       
+
       }
     />
         {/* <List> */}
-         
+
          <Divider variant="inset" component="li" />
-        
+
          {/* </List> */}
-        
-     
+
+
       <a href="#">yes</a>({each["question_helpfulness"]})|<AnswerModal/>
       </ListItem>
       )}): null}
     </List>
-   
+
     </div>
   );
 >>>>>>> bd7bf79e8c2dd3be624ed85d399b4afd1274c946
