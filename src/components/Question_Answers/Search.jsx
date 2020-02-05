@@ -37,7 +37,7 @@ class Search extends Component {
             //  value={values.amount}
             // onChange={handleChange('amount')}
             //  startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            labelWidth={0}
+            // labelWidth={100}
           />
         </FormControl> */}
             <form>
