@@ -117,7 +117,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function FolderList() {
   const classes = useStyles();
-
   return (
     <div>
     <List className={classes.root}>
