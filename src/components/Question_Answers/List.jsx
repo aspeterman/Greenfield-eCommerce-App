@@ -81,6 +81,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+
 const moment = require('moment');
 
   var styles = {
@@ -117,7 +118,7 @@ export default function FolderList() {
               return a.value - b.value}).reverse()
           .map((idValue)=>idValue.id).map((every,x) =>
           <Typography variant="subtitle1">
-         <Typography color="textPrimary">A:</Typography>{`${each["answers"][every]["body"]}`}<br></br>
+         <Typography color="textPrimary" >A:</Typography>{`${each["answers"][every]["body"]}`}<br></br>
          {each["answers"][every]['photos'].length > 0?each["answers"][every]['photos'].map((photo,i)=>
                   <ul style={styles}>
                     {console.log("photo:",photo)}
