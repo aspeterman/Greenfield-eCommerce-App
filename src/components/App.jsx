@@ -34,10 +34,8 @@ class App extends React.Component {
     let element = this.findName(e.target, 'data-selector');
     let time = new Date();
     let interactions = {element, widget, time}
-    // console.log('interactions: ', interactions)
-    axios.post('http://3.134.102.30/interactions', interactions)
+    axios.post('', interactions)
       .then(() => {
-        // console.log('Interaction data sent')
       })
   }
 
@@ -45,14 +43,13 @@ class App extends React.Component {
     if (el.attributes[type]) {
       return el.attributes[type].value;
     }
-    //had to add 'el.parentNode' condition bc of weird bug in q&a section when closing modals
     else if (el.parentNode && !Array.prototype.includes.call(document.children, el)) {
       return this.findName(el.parentNode, type);
     }
     else if (type === 'data-widget') {
       return 'app';
     }
-    else {  //type is 'data-selector
+    else {
       return 'null';
     }
   }
@@ -60,7 +57,7 @@ class App extends React.Component {
   getProducts() {
     let promises = [];
     for (let i = 1; i< 100; i++) {
-      promises.push(fetch(`http://3.134.102.30/products/list/?page=${i}&count=50`)
+      promises.push(fetch(``)
         .then(res => res.json())
       );
     }

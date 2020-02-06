@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
- import Aq from './components/Question_Answers/main_QA/Aq_Main.jsx'
+//  import Aq from './components/Question_Answers/main_QA/Aq_Main.jsx'
 import RatingsView from './components/Reviews/ratingsView.jsx'
 import Home from './components/overall/Home.jsx'
 import ProductView from './components/overall/ProductView.jsx'
@@ -20,7 +20,7 @@ class App extends Component {
       </header>
       <Home />
       <ProductView />
-      <Aq/>
+      {/* <Aq/> */}
 
     </div>
   );

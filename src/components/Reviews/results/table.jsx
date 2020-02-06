@@ -15,7 +15,7 @@ class TableComponent extends Component {
 
     componentDidMount(){
         // this.reviewHistory();
-        // this.fetchReviews()
+        this.fetchReviews()
         // this.reviewHistory()
 
     }
