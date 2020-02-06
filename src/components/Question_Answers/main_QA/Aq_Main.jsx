@@ -25,11 +25,11 @@ class Aq_Main extends Component {
         <div>
             
             <p>{`Questions & answers`}</p>
-            <p>{this.props.state}</p>
+            {/* <p>{this.props.state}</p> */}
             {/* <p>this is state:{reactState}</p> */}
             <Search/>
             <List/>
-            <div class="btn-group">
+            <div >
                 
             {/* <ButtonGroup color="primary" aria-label="outlined primary button group"> */}
             <Button variant="contained" variant="outlined">more answered questions</Button>

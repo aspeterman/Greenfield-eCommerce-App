@@ -81,7 +81,7 @@ class TableComponent extends Component {
                     })} */}
                 </TableBody>
             </Table>
-            {this.fetchReivews()}
+            {this.fetchReivews}
             </Grid>
         );
     }

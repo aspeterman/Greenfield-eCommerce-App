@@ -81,6 +81,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+const moment = require('moment');
+
   var styles = {
     margin: '0px',
     width: '20px',
@@ -111,8 +113,10 @@ export default function FolderList() {
      primary={`Q: ${each["question_body"]}`}
       secondary={
         <React.Fragment>
-        {Object.keys(each["answers"]).map((every) =>
-          <Typography variant="subtitle1" >
+           { Object.keys(each["answers"]).map((num)=>{ return{id: num,value: each["answers"][num]['helpfulness']}}).sort(function (a, b) {
+              return a.value - b.value}).reverse()
+          .map((idValue)=>idValue.id).map((every,x) =>
+          <Typography variant="subtitle1">
          <Typography color="textPrimary">A:</Typography>{`${each["answers"][every]["body"]}`}<br></br>
          {each["answers"][every]['photos'].length > 0?each["answers"][every]['photos'].map((photo,i)=>
                   <ul style={styles}>
@@ -120,7 +124,7 @@ export default function FolderList() {
                   <li key ={i}><img src = {photo} alt="Smiley face" height="42" width="42"></img></li>
                   </ul>
                   ):console.log('false')}
-         <Typography  >{`by${each["answers"][every]["date"]},${each["answers"][every]["answerer_name"]}| helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]})|`}<a href="#">Report</a></Typography>
+         <Typography  >{`by ${each["answers"][every]["answerer_name"]}, ${moment(each["answers"][every]["date"]).utc().format("YYYY-MM-DD hh:mm:ss A Z")} | helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]}) | `}<a href="#">Report</a></Typography>
          </Typography>
            )}
            {Object.keys(each["answers"]).length > 0? <a href="#">Load more answers</a>:<p>no answers yet</p>}
