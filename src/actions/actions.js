@@ -3,7 +3,7 @@
 function fetchReviewsSuccess(reviews) {
   return {
     type: 'FETCH_REVIEWS',
-    reviews: reviews,
+    reviewList: reviews,
     // reviews: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
@@ -12,7 +12,7 @@ function fetchReviewsSuccess(reviews) {
 function fetchReviewsPending(reviews) {
   return {
       type: 'FETCH_REVIEWS_PENDING',
-      reviews: reviews
+      reviewList: reviews
   }
 }
 

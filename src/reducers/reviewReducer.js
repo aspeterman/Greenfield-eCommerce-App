@@ -66,11 +66,11 @@ const reviewReducer = (state = initialState, action ) => {
 }
 
 
-export const getReviews = state => state.reviewList;
+export const getReviews = state => state.products.reviewList;
 export const getReviewsPending = state => state.pending;
 export const getReviewsError = state => state.error;
-export const chooseProduct = state => state.product;
-export const getStyle = state => state.style;
+export const chooseProduct = state => state.products.id;
+export const getStyle = state => state.products.style;
 export const getFit = state => state.fit;
 export const getOverall = state => state.overall;
 

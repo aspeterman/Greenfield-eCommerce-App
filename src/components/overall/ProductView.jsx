@@ -6,6 +6,7 @@ import RatingsView from '../Reviews/ratingsView.jsx'
 import DefaultReview from '../Reviews/defaultReview.jsx'
 import Review from '../Reviews/review.jsx'
 import ResultsView from '../Reviews/results/resultsView.jsx'
+import NewReview from '../Reviews/newReview';
 
 
 
@@ -44,6 +45,7 @@ class ProductView extends Component {
                 <Header className={this.props.id} />
                 <div className="flex-box flex-evenly form-zone animate-pop-in">
                     <div className="column-6 column-md-6">
+                        <NewReview />
                             <div className="flex-box flex-center">
                                 <Button color="primary" variant="contained" onClick={() => this.setState({...this.state, viewProducts : true})}>View Products</Button>
                             </div>
@@ -67,7 +69,9 @@ class ProductView extends Component {
                     <div><h3>photo</h3><img className="full-img" src={require(`./${this.state.image.image}`)} alt="demo"/><RatingsView  />
                     <Review />
                     <ResultsView />
+                    {/* <NewReview /> */}
                     <DefaultReview />
+
                     </div>
                     </div>
               </Dialog>

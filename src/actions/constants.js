@@ -11,6 +11,7 @@ const constants = {
   OVERALL_RATING: 'OVERALL_RATING',
   FIT_RATINg: 'FIT_RATING',
   STYLE_RATINg: 'STYLE_RATING',
-  ADD_NAME: 'ADD_NAME'
+  ADD_NAME: 'ADD_NAME',
+  NAV_TO_HOME: 'NAV_TO_HOME'
  }
  module.exports = constants

@@ -5,8 +5,7 @@ import './App.css';
 import RatingsView from './components/Reviews/ratingsView.jsx'
 import Home from './components/overall/Home.jsx'
 import ProductView from './components/overall/ProductView.jsx'
-// import NavBar from './actions/overall/NavBar.jsx'
-
+import Header from './components/overall/Header.jsx'
 
 class App extends Component {
 
@@ -16,12 +15,12 @@ class App extends Component {
 
     <div className="App">
       {/* <NavBar /> */}
+      <Header />
       <header className="App-header">
       </header>
       <Home />
       <ProductView />
       <Aq/>
-      <RatingsView />
 
     </div>
   );
