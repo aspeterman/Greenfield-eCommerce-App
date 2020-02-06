@@ -5,6 +5,7 @@ import Search from '../Search'
 import List from '../List'
  import Modal from '../Modal'
  import { makeStyles } from '@material-ui/core/styles';
+ const Aq_Main_style = require('./Aq_Main.css');
  
 
   
@@ -30,10 +31,10 @@ class Aq_Main extends Component {
             <Search/>
             <List/>
             <div >
-                
-            {/* <ButtonGroup color="primary" aria-label="outlined primary button group"> */}
+             <span> 
             <Button variant="contained" variant="outlined">more answered questions</Button>
              <Modal/>
+             </span>   
             {/* </ButtonGroup> */}
              </div>
 
