@@ -16,8 +16,6 @@ class TableComponent extends Component {
     componentDidMount(){
         // this.reviewHistory();
         this.fetchReviews()
-        // this.reviewHistory()
-
     }
 
     fetchReviews() {
@@ -30,16 +28,16 @@ class TableComponent extends Component {
           //       // throw(res.error);
           //       console.log('error getting review data')
           //   }
-          console.log(res)
-              dispatch(fetchReviewsSuccess(res.reviews))
-              return res.reviews;
+        console.log(res)
+            dispatch(fetchReviewsSuccess(res.reviews))
+            return res.reviews;
 
-          })
-          .catch(error => {
-              dispatch(fetchReviewsError(error));
-          })
+        })
+        .catch(error => {
+            dispatch(fetchReviewsError(error));
+        })
         }
-      }
+    }
 
     reviewHistory = () => {
         axios({
@@ -78,7 +76,7 @@ class TableComponent extends Component {
 
 render(){
     return(
-    <Grid container spacing={16} xs={12}>
+    <Grid>
         <Table>
             <TableHead>
                 <TableRow>
