@@ -36,6 +36,7 @@ import React, {Component} from 'react'
 import Product from './Product';
 import { connect } from 'react-redux';
 import { Button, Dialog } from '@material-ui/core';
+import TableComponent from '../Reviews/results/table.jsx'
 import {addToCart, chooseProduct} from "../../actions/actions";
 import NewReview from '../Reviews/newReview.jsx'
 import Header from './Header.jsx'
@@ -56,8 +57,9 @@ class ProductList extends Component
                 <div className="row">
 
                     {
-                        this.props.products.map(product => <Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /> )
+                        this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /><TableComponent /><br/></div> )
                     }
+
 
                 </div>
             </div>

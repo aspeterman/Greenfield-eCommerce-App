@@ -26,10 +26,12 @@ import './index.css';
 import  { unregister } from './serviceWorker';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import {createMuiTheme} from '@material-ui/core/styles';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import rootReducer from './reducers/rootReducer.js';
+import dataService from './store/config.js'
 
 const theme = createMuiTheme({
     palette: {
@@ -41,10 +43,11 @@ const theme = createMuiTheme({
           }
       }
 }) // Material UI theme setting
-const storeInstance = createStore (
+const store = createStore (
     rootReducer,
-    applyMiddleware(logger),
+    applyMiddleware(thunk, logger, dataService),
 );
 
-ReactDOM.render(<MuiThemeProvider theme={theme}><Provider store={storeInstance}><App /></Provider></MuiThemeProvider>, document.getElementById('root'));
-unregister();
+ReactDOM.render(<MuiThemeProvider theme={theme}><Provider store={store}><App /></Provider></MuiThemeProvider>, document.getElementById('root'));
+// unregister();
+store.dispatch({ type: 'GET_RETAIL_DATA' })

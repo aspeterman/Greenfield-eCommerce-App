@@ -94,7 +94,8 @@ const initialState = {
 //   return state.reviews;
 // }
 
-const reviewReducer = (state = initialState, action ) => {
+const reviewReducer = (state = [], action ) => {
+
 
     let reviews = state.reviews
 
@@ -109,17 +110,13 @@ const reviewReducer = (state = initialState, action ) => {
         pending: true
     }
     } else if(type === 'FETCH_REVIEWS') {
-    // return {
-        // ...state,
-        // pending: false,
-        // reviews: action.payload
-        return Object.assign({}, state, {
-            isRefreshing: action.isRefreshing,
-            loading: action.loading,
-            isLoadMore: action.isLoadMore,
-            pending: false,
-            reviews: action.payload
-            });
+            return Object.assign({}, state, {
+                isRefreshing: action.isRefreshing,
+                loading: action.loading,
+                isLoadMore: action.isLoadMore,
+                pending: false,
+                reviews: action.payload
+                });
     } else if(type === 'FETCH_REVIEWS_ERROR') {
     return {
         ...state,

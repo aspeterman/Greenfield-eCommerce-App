@@ -5,7 +5,6 @@ import {Table, TableBody, TableHead, TableSortLabel, TableCell, TableRow, Grid} 
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import fetchReviews from '../../../actions/fetchReviews.js';
-import {getReviewsError, getReviews, getReviewsPending} from '../../../reducers/reviewReducer.js';
 import {fetchReviewsPending, fetchReviewsSuccess, fetchReviewsError} from '../../../actions/actions.js';
 
 const toggleOrder = {toggle: false};
@@ -15,29 +14,29 @@ class TableComponent extends Component {
 
     componentDidMount(){
         // this.reviewHistory();
-        this.fetchReviews()
+        fetchReviews()
     }
 
-    fetchReviews() {
-        return dispatch => {
-            dispatch(fetchReviewsPending());
-            fetch('http://52.26.193.201:3000/reviews/list')
-            .then(res => res.json())
-            .then(res => {
-          //       if(res.error) {
-          //       // throw(res.error);
-          //       console.log('error getting review data')
-          //   }
-        console.log(res)
-            dispatch(fetchReviewsSuccess(res.reviews))
-            return res.reviews;
+    // fetchReviews() {
+    //     return dispatch => {
+    //         dispatch(fetchReviewsPending());
+    //         fetch('http://52.26.193.201:3000/reviews/list')
+    //         .then(res => res.json())
+    //         .then(res => {
+    //       //       if(res.error) {
+    //       //       // throw(res.error);
+    //       //       console.log('error getting review data')
+    //       //   }
+    //     console.log(res)
+    //         dispatch(fetchReviewsSuccess(res.reviews))
+    //         return res.reviews;
 
-        })
-        .catch(error => {
-            dispatch(fetchReviewsError(error));
-        })
-        }
-    }
+    //     })
+    //     .catch(error => {
+    //         dispatch(fetchReviewsError(error));
+    //     })
+    //     }
+    // }
 
     reviewHistory = () => {
         axios({
