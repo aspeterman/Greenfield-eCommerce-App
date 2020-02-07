@@ -9,15 +9,16 @@ class DefaultReview extends Component {
   this.state = initialState
   }
     render() {
-        let rating = initialState.products;
-        let total = parseInt(rating.fit) + parseInt(rating.style) + parseInt(rating.overall);
-        let percent = ((total / 30) * 100).toFixed(2);
-        let data = [['fit', 'style', 'overall', 'percent'], [ rating.fit, rating.style, rating.overall, (percent + '%')]];
+        let rating = this.state.products.ratings;
+        // let total = rating.fit + rating.style + rating.overall;
+        let total = 30
+        // let percent = ((total / 30) * 100).toFixed(2);
+        // let data = [['fit', 'style', 'overall', 'percent'], [ rating[0], rating[1], rating[2], (percent + '%')]];
         return (
             <div className="main">
                 <div className="flex-box flex-end">
                 <div className="flex-box flex-evenly column-3 form-zone">
-                  <div>{data}</div>
+                  {/* <div>{data}</div> */}
              </div>
                 </div>
 
@@ -25,7 +26,7 @@ class DefaultReview extends Component {
                 </div>
                 <div className="flex-box flex-center column-12">
                     <div className="results column-4">
-                        {/* {this.state.products.id.map((item, i) => {
+                        {/* {this.state.products.map((item, i) => {
                             return (
                                 <p key={i}>{item}</p>
                             )
@@ -39,12 +40,12 @@ class DefaultReview extends Component {
                     </div>
                     <div className="results column-4">
                         <div className="flex-box flex-between">
-                            <h4>Ratings </h4>
+                            <h4> </h4>
                         </div>
-                        <p>fit: {rating.fit}</p>
+                        {/* <p>fit: {rating.fit}</p>
                         <p>style: {rating.style}</p>
                         <p>Overall: {rating.overall}</p>
-                        <p>Total score: {percent}%</p>
+                        <p>Total score: {percent}%</p> */}
                     </div>
 
                 </div>

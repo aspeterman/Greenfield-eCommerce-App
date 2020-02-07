@@ -71,15 +71,53 @@ const initialState = {
     products: [
         {
             id: 1,
-            reviewList: {},
+            name: 'Nike',
+            price: 3000,
             reviewAfter: {1: '', 2: ''},
-        ratings: [{
-            fit: 1,
-            style: 1,
-            overall: 1,
-        }],
-        name: 'Nike',
-        price: 3000,
+            reviewList: {
+                "product": "1",
+                "page": 0,
+                "count": 5,
+                "results": [
+                  {
+                    "review_id": 5,
+                    "rating": 3,
+                    "summary": "I'm enjoying wearing these shades",
+                    "recommend": 0,
+                    "response": "",
+                    "body": "Comfortable and practical.",
+                    "date": "2019-04-14T00:00:00.000Z",
+                    "reviewer_name": "shortandsweeet",
+                    "helpfulness": 5,
+                    "photos": [{
+                        "id": 1,
+                        "url": "urlplaceholder/review_5_photo_number_1.jpg"
+                      },
+                      {
+                        "id": 2,
+                        "url": "urlplaceholder/review_5_photo_number_2.jpg"
+                      },
+                      // ...
+                    ],
+                  },
+                  {
+                    "review_id": 3,
+                    "rating": 4,
+                    "summary": "I am liking these glasses",
+                    "recommend": 0,
+                    "response": "Glad you're enjoying the product!",
+                    "body": "They are very dark. But that's good because I'm in very sunny spots",
+                    "date": "2019-06-23T00:00:00.000Z",
+                    "reviewer_name": "bigbrotherbenjamin",
+                    "helpfulness": 5,
+                    "photos": [],
+                  },
+                  // ...
+                ]
+              },
+
+
+
         questions :[{
             "results": [
                 {
@@ -236,11 +274,63 @@ const initialState = {
             ],
         }],
 
-        imageUrl: require('../assets/images/Nike.jpg')
+        imageUrl: require('../assets/images/Nike.jpg'),
+        characteristics: {
+            meta: {
+                Size: 1,
+                Length: 3,
+                Width: 1,
+                Fit: 10,
+                Comfort: 9,
+                Quality: 2,
+            },
+        },
         },
         {
         id: 2,
-        reviewList: {},
+        reviewList:
+            {
+                "product": "2",
+                "page": 0,
+                "count": 5,
+                "results": [
+                  {
+                    "review_id": 5,
+                    "rating": 3,
+                    "summary": "I'm enjoying wearing these shades",
+                    "recommend": 0,
+                    "response": "",
+                    "body": "Comfortable and practical.",
+                    "date": "2019-04-14T00:00:00.000Z",
+                    "reviewer_name": "shortandsweeet",
+                    "helpfulness": 5,
+                    "photos": [{
+                        "id": 1,
+                        "url": "urlplaceholder/review_5_photo_number_1.jpg"
+                      },
+                      {
+                        "id": 2,
+                        "url": "urlplaceholder/review_5_photo_number_2.jpg"
+                      },
+                      // ...
+                    ]
+                  },
+                  {
+                    "review_id": 3,
+                    "rating": 4,
+                    "summary": "I am liking these glasses",
+                    "recommend": 0,
+                    "response": "Glad you're enjoying the product!",
+                    "body": "They are very dark. But that's good because I'm in very sunny spots",
+                    "date": "2019-06-23T00:00:00.000Z",
+                    "reviewer_name": "bigbrotherbenjamin",
+                    "helpfulness": 5,
+                    "photos": [],
+                  },
+                  // ...
+                ],
+
+        },
         reviewAfter: {1: '', 2: ''},
         name: 'Socialite',
         price: 1000,
@@ -268,16 +358,54 @@ const initialState = {
                 }
             }]
         }],
-        ratings: [{
-            fit: 1,
-            style: 1,
-            overall: 1,
-        }],
-        imageUrl: require('../assets/images/Socialite.jpg')
+
+        imageUrl: require('../assets/images/Socialite.jpg'),
         },
         {
         id: 3,
         name: 'Denim',
+        reviewList:
+        {
+            "product": "3",
+            "page": 0,
+            "count": 5,
+            "results": [
+              {
+                "review_id": 5,
+                "rating": 3,
+                "summary": "I'm enjoying wearing these shades",
+                "recommend": 0,
+                "response": "",
+                "body": "Comfortable and practical.",
+                "date": "2019-04-14T00:00:00.000Z",
+                "reviewer_name": "shortandsweeet",
+                "helpfulness": 5,
+                "photos": [{
+                    "id": 1,
+                    "url": "urlplaceholder/review_5_photo_number_1.jpg"
+                  },
+                  {
+                    "id": 2,
+                    "url": "urlplaceholder/review_5_photo_number_2.jpg"
+                  },
+                  // ...
+                ]
+              },
+              {
+                "review_id": 3,
+                "rating": 4,
+                "summary": "I am liking these glasses",
+                "recommend": 0,
+                "response": "Glad you're enjoying the product!",
+                "body": "They are very dark. But that's good because I'm in very sunny spots",
+                "date": "2019-06-23T00:00:00.000Z",
+                "reviewer_name": "bigbrotherbenjamin",
+                "helpfulness": 5,
+                "photos": [],
+              },
+              // ...
+            ],
+          },
         questions: [{
             "results":[{
 

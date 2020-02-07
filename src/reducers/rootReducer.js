@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux';
-import productReducer from "./productReducer.js"
-import cart from "./shoppingCartReducer.js"
+import CartReducer from "./CartReducer.js"
 import questionReducer from "./questionReducer.js"
-import reviewReducer from './shoppingCartReducer.js'
-import review from './reviewReducer.js'
+import productReducer from './ProductReducer.js'
+import reviewReducer from './reviewReducer.js'
 
 export default combineReducers({
-  productReducer,
-  cart,
+  product: productReducer,
+  cart: CartReducer,
   questionReducer,
-  reviewReducer,
-  review,
+  review: reviewReducer,
+  // review,
 });

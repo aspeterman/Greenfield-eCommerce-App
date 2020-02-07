@@ -14,16 +14,26 @@ class RatingsView extends Component {
         overall: 0,
         image: '',
         open: false,
+        input1: 'foobar',
+
         }
     }
-    // handleClose = () => {
-    //     this.setState({
-    //         ...this.state,
-    //         open: false,
-    //         image: '',
-    //         name: ''
-    //     })
-    // }
+    handleClose = () => {
+        this.setState({
+            ...this.state,
+            input1: '',
+            fit: 0,
+            style: 0,
+            overall: 0
+        })
+    }
+
+    handleChangeFor = (event, property) => {
+        this.setState({
+            ...this.state,
+            [property]: event.target.value,
+        });
+    }
 
     handleRangeChangeFor = (event, property) => {
         this.setState({
@@ -43,8 +53,11 @@ class RatingsView extends Component {
         this.props.dispatch(action);
         action = {type: 'OVERALL_RATING', payload: this.state.overall};
         this.props.dispatch(action);
+        action = {type: 'ADD_REVIEW', payload: this.state.input1};
+        this.props.dispatch(action);
         console.log(this.state)
         console.log(this.props)
+        this.handleClose()
     }
     render(){
         return(
@@ -71,9 +84,14 @@ class RatingsView extends Component {
                             <div className="flex-col slider-div column-12">
                             <label>Overall impression of product: {this.state.overall}/5</label> <input value={this.state.overall} onChange={(event)=>this.handleRangeChangeFor(event, 'overall')} className="slider column-8" type="range" min="0" max="5" required/>
                             </div>
+                            <div className="flex-col column-12">
+                            <input value={this.state.input1} onChange={(event) => this.handleChangeFor(event, 'input1')} required />
+
+                        </div>
                             <div className="flex-box flex-center margin-top-15">
                             <Button variant="contained" color="primary" onClick={()=>this.sendValueTostate()}>Submit</Button>
                             </div>
+
                         </div>
                     </div>
             </div>
@@ -81,7 +99,7 @@ class RatingsView extends Component {
                                     );
     }
 }
-const mapStoreToProps = (storage) => ({
+const mapStorageToProps = (storage) => ({
     storage
 });
-export default connect(mapStoreToProps)(RatingsView);
+export default connect(mapStorageToProps)(RatingsView);
