@@ -94,10 +94,10 @@ const initialState = {
 //   return state.reviews;
 // }
 
-const reviewReducer = (state = [], action ) => {
+const reviewReducer = (state = initialState, action ) => {
 
 
-    let reviews = state.reviews
+    let review = state.review
 
     if(type === 'ADD_NAME'){
     return {
@@ -110,13 +110,16 @@ const reviewReducer = (state = [], action ) => {
         pending: true
     }
     } else if(type === 'FETCH_REVIEWS') {
-            return Object.assign({}, state, {
-                isRefreshing: action.isRefreshing,
-                loading: action.loading,
-                isLoadMore: action.isLoadMore,
-                pending: false,
+            // return Object.assign({}, state, {
+            //     isRefreshing: action.isRefreshing,
+            //     loading: action.loading,
+            //     isLoadMore: action.isLoadMore,
+            //     pending: false,
+            //     reviews: action.payload
+            //     });
+            return {
                 reviews: action.payload
-                });
+            }
     } else if(type === 'FETCH_REVIEWS_ERROR') {
     return {
         ...state,
@@ -124,27 +127,45 @@ const reviewReducer = (state = [], action ) => {
         error: action.error
     }
     } else if(type === 'ADD_REVIEW'){
-        state.reviews.push(action.payload)
+        state.review.push(action.payload)
         return {
             ...state,
-            reviews: reviews
+            review: review
         };
     } else if (type === 'FIT_RATING') {
         return {
             ...state,
             fit: action.payload,
         }
-    } else if (type === 'STYLE_RATING'){
+    } else if (type === 'WIDTH_RATING'){
     return {
             ...state,
-            style: action.payload,
+            width: action.payload,
         }
-    } else if (type === 'OVERALL_RATING'){
+    } else if (type === 'LENGTH_RATING'){
+    return {
+            ...state,
+            length: action.payload,
+        }
+    }
+    else if (type === 'SIZE_RATING'){
         return {
             ...state,
-            overall: action.payload,
+            size: action.payload,
         }
-    } else if (type === 'CLEAR_RATING'){
+    }
+    else if (type === 'QUALITY_RATING'){
+        return {
+            ...state,
+            quality: action.payload,
+        }
+    } else if (type === 'COMFORT_RATING'){
+        return {
+            ...state,
+            comfort: action.payload,
+        }
+    }
+    else if (type === 'CLEAR_RATING'){
         return blankFeedback;
     } else {
         return state;
@@ -152,12 +173,10 @@ const reviewReducer = (state = [], action ) => {
 }
 
 
-export const getReviews = state => state.products.reviews;
+export const getReviews = state => state.products.reviews.dispatch('FETCH_REVIEWS');
 export const getReviewsPending = state => state.pending;
 export const getReviewsError = state => state.error;
 export const chooseProduct = state => state.products.id;
-export const getStyle = state => state.products.style;
-export const getFit = state => state.fit;
-export const getOverall = state => state.overall;
+
 
 export default reviewReducer

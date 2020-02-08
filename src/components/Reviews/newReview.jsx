@@ -93,9 +93,26 @@
 
 import React from 'react';
 import RatingSymbol from './ratingSymbol.jsx';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import { green, orange, grey } from '@material-ui/core/colors';
+
+
+
+const innerTheme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: grey[500],
+    },
+  },
+});
+
+
+
 
 
 const NewReview = (props) => {
+
   let christics = [];
   let reqstar = (<span className='reqstar'>*</span>)
   let createChars = (char, meaning) => {
@@ -144,6 +161,7 @@ const NewReview = (props) => {
   }
 
   return (
+
     <div id='rmodal' className='rmodal' data-selector='new-review-modal' onClick={(e) => {
       if (e.target.id === 'rmodal') {
         document.getElementById('rmodal').style.display = 'none';
@@ -154,8 +172,10 @@ const NewReview = (props) => {
           document.getElementById('rmodal').style.display = 'none';
         }}>&times;</span>
         <h5>Write Your Review</h5>
-        <div className='text-main bold rlabel'>About the {props.pname}</div>
+        <div className='text-main bold rlabel'>About the {props.name}</div>
         <form className='text-reg' onSubmit={(e) => {
+          console.log(this.props)
+          console.log(this.state)
           e.preventDefault();
           let review = {};
           let rating = document.getElementsByName('rrating');
@@ -190,12 +210,18 @@ const NewReview = (props) => {
           <span className='newstars'>
             {/* <RatingSymbol rating={props.state.currentRating} update={props.update} clickable={true} /><br></br> */}
           </span>
+
+
           <input className='hiddenstar' type='radio' name='rrating' value='1' required></input>
           <input className='hiddenstar' type='radio' name='rrating' value='2'></input>
           <input className='hiddenstar' type='radio' name='rrating' value='3'></input>
           <input className='hiddenstar' type='radio' name='rrating' value='4'></input>
           <input className='hiddenstar' type='radio' name='rrating' value='5'></input>
           <div className='rrecommend'>Recommended{reqstar}
+          <ThemeProvider theme={innerTheme}>
+        <Checkbox defaultChecked value="true" >Yes</Checkbox>
+        <Checkbox defaultChecked />
+      </ThemeProvider>
             <input className='radio' type='radio' name='rrecommend' value='true' required></input>
             <label htmlFor='yes'>Yes</label>
             <input className='radio' type='radio' name='rrecommend' value='false'></input>
