@@ -5,8 +5,8 @@
 // import RatingsView from '../Reviews/ratingsView.jsx'
 // import DefaultReview from '../Reviews/defaultReview.jsx'
 // import Review from '../Reviews/review.jsx'
-import ResultsView from '../Reviews/results/resultsView.jsx'
-import NewReview from '../Reviews/newReview';
+// import ResultsView from '../Reviews/results/resultsView.jsx'
+// import NewReview from '../Reviews/newReview';
 
 
 
@@ -110,7 +110,6 @@ export default class ProductItem extends Component {
     return (
       <div style={{ marginBottom: 20 }}>
         <Product title={product.title} price={product.price} action={addToCartAction} />
-        {/* <TableComponent /> */}
       </div>
     )
   }

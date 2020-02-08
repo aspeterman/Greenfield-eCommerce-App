@@ -42,6 +42,7 @@ import NewReview from '../Reviews/newReview.jsx'
 import Header from './Header.jsx'
 
 class ProductList extends Component
+
 {
 
     addToCart = (product) => {
@@ -59,13 +60,29 @@ class ProductList extends Component
                     {
                         this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /><TableComponent /><br/></div> )
                     }
-
-
+              {/* <Header className={this.props.reduxStore.home}/> */}
+                <div className="flex-box flex-evenly form-zone animate-pop-in">
+                    <div className="column-4">
+                        <h2>Your Design Sketch</h2>
+                        <div className="flex-box flex-evenly">
+                        <div className="thumbnail column-6 column-md-10">
+                            {/* <img onClick={()=>this.setState({...this.state, open: true})} src={this.props.state.product.products.photos.url} alt="your lesson"/> */}
+                        </div>
+                        </div>
+                        {/* <Dialog open={this.state.open} onClose={this.handleClose}> */}
+                            <div className="dialog">
+                                <div className="flex-box flex-end close-icon" onClick={this.handleClose}>x</div><div><h3>Example photo</h3>
+                                {/* <img className="full-img" src={this.props.products.photos.url} alt="demo" /> */}
+                                </div>
+                            </div>
+                        {/* </Dialog> */}
+                    </div>
+                                  </div>
                 </div>
             </div>
-        )
-    }
-}
+
+                  )
+                }}
 
 const mapStateToProps = (state) => {
 

@@ -36,7 +36,7 @@ class Product extends Component
                         <img className="img-responsive" src={product.results.photos}/>
                     </div>
                     <figcaption className="info-wrap">
-                        <a href='#' onclick={this.selectProduct} className="name">{product.name}</a>
+                        <a href='#' onClick={this.selectProduct} className="name">{product.name}</a>
                         <p className="slogan">{product.slogan}</p>
                         <p className="desc">{product.description}</p>
                         <p className="category">{product.category}</p>
