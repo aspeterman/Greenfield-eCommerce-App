@@ -1,5 +1,5 @@
 // import React from 'react';
-// import StarRating from '../overview/StarRating.jsx';
+// import StareviewRating from '../overview/StareviewRating.jsx';
 // import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import {Button, Input, FormControl } from '@material-ui/core';
@@ -45,7 +45,7 @@
 //                           </FormControl>
 //                       </div>
 //                       <div className='charContainer' key={1}>
-//         {/* {char}{reqstar} <div className='indicator'>{index !== undefined ? meaning[index] : 'None selected'}</div> */}
+//         {/* {char}{reqStar} <div className='indicator'>{index !== undefined ? meaning[index] : 'None selected'}</div> */}
 //         <div className='char'>
 //           <div>
 //             <input type='radio' name={1} value='1' required onChange={(e) => this.props.force()}></input>
@@ -96,7 +96,7 @@ import RatingSymbol from './ratingSymbol.jsx';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import { green, orange, grey } from '@material-ui/core/colors';
-
+import { Button, Dialog } from '@material-ui/core';
 
 
 const innerTheme = createMuiTheme({
@@ -114,7 +114,7 @@ const innerTheme = createMuiTheme({
 const NewReview = (props) => {
 
   let christics = [];
-  let reqstar = (<span className='reqstar'>*</span>)
+  let reqStar = (<span className='reqStar'>*</span>)
   let createChars = (char, meaning) => {
     let index;
     let radios = document.getElementsByName(char);
@@ -127,7 +127,7 @@ const NewReview = (props) => {
     }
     christics.push(
       <div className='charContainer' key={char}>
-        {char}{reqstar} <div className='indicator'>{index !== undefined ? meaning[index] : 'None selected'}</div>
+        {char}{reqStar} <div className='indicator'>{index !== undefined ? meaning[index] : 'None selected'}</div>
         <div className='char'>
           <div>
             <input type='radio' name={char} value='1' required onChange={(e) => props.force()}></input>
@@ -161,6 +161,7 @@ const NewReview = (props) => {
   }
 
   return (
+    // <Dialog>
 
     <div id='rmodal' className='rmodal' data-selector='new-review-modal' onClick={(e) => {
       if (e.target.id === 'rmodal') {
@@ -178,7 +179,7 @@ const NewReview = (props) => {
           console.log(this.state)
           e.preventDefault();
           let review = {};
-          let rating = document.getElementsByName('rrating');
+          let rating = document.getElementsByName('reviewRating');
           if (rating) {
             for (let i = 0; i < rating.length; ++i) {
               if (rating[i].checked) {
@@ -186,9 +187,9 @@ const NewReview = (props) => {
               }
             }
           }
-          review.summary = document.getElementById('rsummary').value;
-          review.body = document.getElementById('rbody').value;
-          let reco = document.getElementsByName('rrecommend');
+          review.summary = document.getElementById('reviewSummary').value;
+          review.body = document.getElementById('reviewBody').value;
+          let reco = document.getElementsByName('reviewRecommended');
           if (reco) {
             for (let i = 0; i < reco.length; ++i) {
               if (reco[i].checked) {
@@ -196,68 +197,69 @@ const NewReview = (props) => {
               }
             }
           }
-          review.name = document.getElementById('ruser').value;
+          review.reviewer_name = document.getElementById('ruser').value;
           review.email = document.getElementById('remail').value;
           review.photos = [];
           review.characteristics = {};
 
-          review.photos = document.getElementById('rimages').value.split(',').map(str => str.trim());
-          // console.log(review);
+          review.photos = document.getElementById('reviewGallery').value.split(',').map(str => str.trim());
+          console.log(review);
           props.submit(review);
           document.getElementById('rmodal').style.display = 'none';
         }}>
-          Rating{reqstar}
+          Rating{reqStar}
           <span className='newstars'>
             {/* <RatingSymbol rating={props.state.currentRating} update={props.update} clickable={true} /><br></br> */}
           </span>
 
 
-          <input className='hiddenstar' type='radio' name='rrating' value='1' required></input>
-          <input className='hiddenstar' type='radio' name='rrating' value='2'></input>
-          <input className='hiddenstar' type='radio' name='rrating' value='3'></input>
-          <input className='hiddenstar' type='radio' name='rrating' value='4'></input>
-          <input className='hiddenstar' type='radio' name='rrating' value='5'></input>
-          <div className='rrecommend'>Recommended{reqstar}
-          <ThemeProvider theme={innerTheme}>
+          <input className='hiddenstar' type='radio' name='reviewRating' value='1' required></input>
+          <input className='hiddenstar' type='radio' name='reviewRating' value='2'></input>
+          <input className='hiddenstar' type='radio' name='reviewRating' value='3'></input>
+          <input className='hiddenstar' type='radio' name='reviewRating' value='4'></input>
+          <input className='hiddenstar' type='radio' name='reviewRating' value='5'></input>
+          <div className='reviewRecommended'>Recommended{reqStar}
+          {/* <ThemeProvider theme={innerTheme}>
         <Checkbox defaultChecked value="true" >Yes</Checkbox>
         <Checkbox defaultChecked />
-      </ThemeProvider>
-            <input className='radio' type='radio' name='rrecommend' value='true' required></input>
+      </ThemeProvider> */}
+            <input className='radio' type='radio' name='reviewRecommended' value='true' required></input>
             <label htmlFor='yes'>Yes</label>
-            <input className='radio' type='radio' name='rrecommend' value='false'></input>
+            <input className='radio' type='radio' name='reviewRecommended' value='false'></input>
             <label htmlFor='no'>No</label>
           </div>
           <div id='christics'>
             Characteristics:<br></br>
             {christics}
           </div>
-          Summary{reqstar}<br></br>
-          <input type='text' id='rsummary'  maxLength='60' autoFocus required></input><br></br>
+          Summary{reqStar}<br></br>
+          <input type='text' id='reviewSummary'  maxLength='60' autoFocus required></input><br></br>
           <div className='body-container'>
-            Review body{reqstar}<br></br>
-            <textarea id='rbody' rows='4' minLength='50' maxLength='1000' required onChange={(e) => {
+            Review body{reqStar}<br></br>
+            <textarea id='reviewBody' rows='4' minLength='50' maxLength='1000' required onChange={(e) => {
 
             }} placeholder="Tell us about your experience with our product"></textarea><br></br>
 
           </div>
           <input type='text' id='ruser' maxLength='16' required></input><br></br>
-          Email{reqstar}
+          Email{reqStar}
           <div className='remailContainer'>
             <input type='text' id='remail' required pattern='[^@\s]+@[^@\s]+\.[^@\s]+'></input><br></br>
 
           </div>
           Images <br></br>
           <textarea
-            id='rimages'
-            maxLength='1000'
+            id='reviewGallery'
+            maxLength='5000'
 
             rows='2'>
           </textarea>
-          {reqstar}<br></br>
+          {reqStar}<br></br>
           <button>SUBMIT REVIEW</button>
         </form>
       </div>
     </div>
+    /* </Dialog> */
   );
 }
 

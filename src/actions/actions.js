@@ -1,9 +1,13 @@
 
 
-export const fetchReviewsSuccess = (reviews) => {
+export const fetchReviewsSuccess = (review) => {
   return {
     type: 'FETCH_REVIEWS',
-    reviews: reviews,
+    // reviews: reviews,
+    payload: {
+      review,
+      quantity: 1
+  }
     // reviews: json.data.children.map(child => child.data),
     // receivedAt: Date.now()
   }
@@ -12,7 +16,7 @@ export const fetchReviewsSuccess = (reviews) => {
 export const fetchReviewsPending = (pending) => {
   return {
       type: 'FETCH_REVIEWS_PENDING',
-      pending: false
+      isLoading: true
   }
 }
 
@@ -22,6 +26,9 @@ export const fetchReviewsError = (error) => {
       error: error
   }
 }
+
+
+
 export const addToCart = (product) => {
 return {
   type: 'ADD_TO_CART',
@@ -31,6 +38,7 @@ return {
   }
 }
 }
+
 
 export const removeFromCart = (productId) => {
 
