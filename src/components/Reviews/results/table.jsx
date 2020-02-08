@@ -17,43 +17,6 @@ class TableComponent extends Component {
         fetchReviews()
     }
 
-    // fetchReviews() {
-    //     return dispatch => {
-    //         dispatch(fetchReviewsPending());
-    //         fetch('http://52.26.193.201:3000/reviews/list')
-    //         .then(res => res.json())
-    //         .then(res => {
-    //       //       if(res.error) {
-    //       //       // throw(res.error);
-    //       //       console.log('error getting review data')
-    //       //   }
-    //     console.log(res)
-    //         dispatch(fetchReviewsSuccess(res.reviews))
-    //         return res.reviews;
-
-    //     })
-    //     .catch(error => {
-    //         dispatch(fetchReviewsError(error));
-    //     })
-    //     }
-    // }
-
-    reviewHistory = () => {
-        axios({
-            method: 'GET',
-            url: 'http://http//52.26.193.201:3000/reviews/:1/list'
-        }).then((response) => {
-            const reviewProductHistory = response.data;
-            const action = {type: 'FETCH_REVIEWS', payload: reviewProductHistory};
-            this.props.dispatch(action);
-        }).catch((error) => {
-            console.log('Error setting review history', error);
-        })
-    }
-
-    sortBy = (type) => {
-        console.log('sort')
-    }
 
 
 
@@ -80,21 +43,21 @@ render(){
             <TableHead>
                 <TableRow>
                     <TableCell><TableSortLabel onClick={()=> this.sortBy("name")}>Name</TableSortLabel></TableCell>
-                    <TableCell><TableSortLabel onClick={()=> this.sortBy("meal")}>Product</TableSortLabel></TableCell>
-                    <TableCell><TableSortLabel onClick={()=> this.sortBy("date")}>Date</TableSortLabel></TableCell>
+                    <TableCell><TableSortLabel onClick={()=> this.sortBy("product")}>Product</TableSortLabel></TableCell>
+                    <TableCell><TableSortLabel onClick={()=> this.sortBy("recommended")}>recommended</TableSortLabel></TableCell>
                     <TableCell>Comments</TableCell>
-                    <TableCell><TableSortLabel onClick={()=> this.sortBy("overall_rating")}>Overall Rating</TableSortLabel></TableCell>
+                    <TableCell><TableSortLabel onClick={()=> this.sortBy("rating")}></TableSortLabel></TableCell>
                     <TableCell>Flag for Review</TableCell>
                     <TableCell>Delete</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
-                {/* {this.props.storage.map((name, i)=>{
+                {this.props.review.map((rating, i)=>{
             return (
-                <TableRowComponent i={i} name={name}/>
+                <TableRowComponent i={i} rating={rating}/>
                     );
-                })} */}
-                {/* {this.props.name} */}
+                })}
+                {/* {this.props.rreview.rating} */}
             </TableBody>
         </Table>
         </Grid>
@@ -113,7 +76,7 @@ const mapStorageToProps = (storage) => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    fetchReviews
+    review: fetchReviews
 }, dispatch)
 
 export default connect(mapStorageToProps, mapDispatchToProps)(TableComponent);

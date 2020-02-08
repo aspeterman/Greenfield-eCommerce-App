@@ -4,14 +4,25 @@ let blankFeedback = {
     name: '',
     product: '',
     fit: 0,
-    style: 0,
-    overall: 0,
+    size: 0,
+    quality: 0,
+    comfort: 0,
+    width: 0,
+    length: 0,
 
 };
 const initialState = {
     isLoading: false,
     isLoadMore: false,
     loadAfter: {1: '', 2: ''},
+    ratings: {
+        fit: 0,
+        size: 0,
+        quality: 0,
+        comfort: 0,
+        width: 0,
+        length: 0,
+    },
     reviews: [
         {
             "product": "1",
@@ -56,7 +67,7 @@ const initialState = {
           },
     ]
 }
-// const shoppingCartReducer = function(state = initialState, action) {
+// const shoppingreviewReducer = function(state = initialState, action) {
 //   switch (action.type) {
 //   case FETCH_REVIEWS:
 //       return Object.assign({}, state, {
@@ -97,7 +108,7 @@ const initialState = {
 const reviewReducer = (state = initialState, action ) => {
 
 
-    let review = state.review
+    let review = state.reviews
 
     if(type === 'ADD_NAME'){
     return {
@@ -118,6 +129,7 @@ const reviewReducer = (state = initialState, action ) => {
             //     reviews: action.payload
             //     });
             return {
+
                 reviews: action.payload
             }
     } else if(type === 'FETCH_REVIEWS_ERROR') {
@@ -180,3 +192,5 @@ export const chooseProduct = state => state.products.id;
 
 
 export default reviewReducer
+
+

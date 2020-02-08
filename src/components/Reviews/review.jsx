@@ -52,9 +52,9 @@
 //                                 return (
 //                                     <div className="thumbnail" key={i}>
 //                                         {this.state.selected === ex ? (<div className="flex-col selected-image">
-//                                             <img src={photos[ex].url} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`example-work-${i + 1}`} />
+//                                             <img src={this.props.state.product.products[ex].url} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`example-work-${i + 1}`} />
 //                                             <Button onClick={() => this.selectProject('')}>undo</Button></div>) : (<div className="flex-col">
-//                                                 <img src={photos[ex].url} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`example-work-${i + 1}`} />
+//                                                 <img src={this.props.state.product.products[ex].url} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`example-work-${i + 1}`} />
 //                                             <Button color="secondary" onClick={() => this.selectProject(ex)}>select</Button></div>)}
 //                                     </div>
 //                                 )

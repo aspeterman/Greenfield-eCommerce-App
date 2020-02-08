@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
+import NewReview from '../Reviews/newReview.jsx'
 class Product extends Component
 {
     state = {
         inCart: this.props.inCart,
-        selectProduct: this.props.selectProduct
+        selectProduct: this.props.selectProduct,
+        open: false
     };
       selectProduct = (e) => {
-        e.preventDefault();
         console.log('selected')
-        this.props.selectProduct(this.props.product);
+        this.selectProduct(this.props.product);
         this.setState({
           selectProduct: true
       })
@@ -33,13 +34,14 @@ class Product extends Component
             <div className="col-md-3">
                 <figure className="card card-product">
                     <div className="img-wrap">
-                        <img className="img-responsive" src={product.results.photos}/>
+                        {/* <img className="img-responsive" src={product.products.photos}/> */}
                     </div>
                     <figcaption className="info-wrap">
                         <a href='#' onClick={this.selectProduct} className="name">{product.name}</a>
                         <p className="slogan">{product.slogan}</p>
                         <p className="desc">{product.description}</p>
                         <p className="category">{product.category}</p>
+                        <div><NewReview/></div>
                     </figcaption>
                     <div className="bottom-wrap">
 
