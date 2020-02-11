@@ -42,11 +42,13 @@ import NewReview from '../Reviews/newReview.jsx'
 import Header from './Header.jsx'
 
 class ProductList extends Component
+
 {
 
     addToCart = (product) => {
         this.props.addToCart(product);
     }
+
 
     render() {
         return (
@@ -56,22 +58,41 @@ class ProductList extends Component
 
                 <div className="row">
 
-                    {
-                        this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /><TableComponent /><br/></div> )
-                    }
+                    {/* {
+                        this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} />  <p><NewReview onClose={this.handleClose}/>Open</p><br/></div>
+                        )
+                    } */}
 
-
+              {/* <Header className={this.props.store.home}/> */}
+                <div className="flex-box flex-evenly form-zone animate-pop-in">
+                    <div className="column-4">
+                        <h2>Your Product</h2>
+                        <div className="flex-box flex-evenly">
+                        <div className="thumbnail column-6 column-md-10">
+                            {/* <img onClick={()=>this.setState({...this.state, open: true})} src={this.props.state.product.products.photos.url[0]} alt="your review"/> */}
+                        </div>
+                        </div>
+                            <div className="dialog">
+                                {/* <div className="flex-box flex-end close-icon" onClick={this.handleClose}>x</div> */}
+                                <div>
+                                {/* <img className="full-img" src={this.props.products.photos.url} alt="demo" /> */}
+                                </div>
+                            </div>
+                        {/* </Dialog> */}
+                    </div>
+                                  </div>
                 </div>
             </div>
-        )
-    }
-}
+
+                  )
+                }}
 
 const mapStateToProps = (state) => {
 
     return {
         products: state.product.products,
-        cart: state.cart.cart
+        cart: state.cart.cart,
+        review: state.review.reviews
     }
 };
 
@@ -79,7 +100,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (product) => {
             dispatch(addToCart(product));
-        }
+        },
+
     }
 };
 
