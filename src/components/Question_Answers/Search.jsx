@@ -48,13 +48,11 @@ export default function CustomizedInputBase() {
       <InputBase id="val"
         className={classes.input}
         placeholder= "Have a question?Search for answer..."/>
-      <IconButton type="submit" className={classes.iconButton} aria-label="search" >    
-        <SearchIcon onClick ={(e)=> e.preventDefault(
+      <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick ={(e)=> e.preventDefault(
           <Highlight search ={document.getElementById("val").value} >{initialState.products[0].questions}</Highlight>,
           console.log(document.getElementById("val").value)
-
-
-        )}/>
+        )}>    
+        <SearchIcon/>
       </IconButton>
     </Paper>
     </div>
