@@ -5,6 +5,7 @@ import {Table, TableBody, TableHead, TableSortLabel, TableCell, TableRow, Grid} 
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import fetchReviews from '../../../actions/fetchReviews.js';
+import fetchQuestions from '../../../actions/fetchQuestions.js';
 import {fetchReviewsPending, fetchReviewsSuccess, fetchReviewsError} from '../../../actions/actions.js';
 
 const toggleOrder = {toggle: false};
@@ -15,6 +16,7 @@ class TableComponent extends Component {
     componentDidMount(){
         // this.reviewHistory();
         fetchReviews()
+        fetchQuestions()
     }
 
 
