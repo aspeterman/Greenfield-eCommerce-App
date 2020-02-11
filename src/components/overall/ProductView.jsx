@@ -3,39 +3,25 @@ import { connect } from 'react-redux';
 import { Button, Dialog } from '@material-ui/core';
 import Header from './Header';
 import RatingsView from '../Reviews/ratingsView.jsx'
-import DefaultReview from '../Reviews/defaultReview.jsx'
-import Review from '../Reviews/review.jsx'
+import Reviews from '../Reviews/review.jsx'
 import ResultsView from '../Reviews/results/resultsView.jsx'
 import NewReview from '../Reviews/newReview';
-import ProductList from './ProductList'
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Paper from '@material-ui/core/Paper';
-import Draggable from 'react-draggable';
+
+import StarRating from '../Reviews/ratingSymbol'
 
 
 class ProductView extends Component {
     constructor() {
         super();
         this.state = {
-            tempProducts: [{image: 'Denim.jpg'}, {image:'Nike.jpg'}],
             open: false,
-            image: {image: 'Denim.jpg'},
             viewProducts: false,
-            viewReview: false
+            viewReview: false,
+            rating: 0
         }
         this.selectProduct = this.selectProduct.bind(this)
     }
 
-    // handleClickOpen = () => {
-    //   setOpen(true);
-    // };
-
-    // handleClose = () => {
-    //   setOpen(false);
-    // };
 
     handleClose = () => {
         this.setState({
@@ -59,40 +45,16 @@ class ProductView extends Component {
       // const { product } = this.props;
       const {product} = this.props.state.product.products.map(results => results.results.map(x => x.photos.map(y=>y.url)))
       console.log(this.props.state.product.products.map(results => results.results.map(x => x.photos.map(y=>y.url))))
+      const {review} = this.props.state.review.reviews.map(results => results.results.map(result=>result.photos.map(x=>x.url)))
+      console.log(this.props.state.review.reviews.map(results => results.results.map(result=>result)))
 
         return (
 
             <div className="main">
-                  {/* <div>
-      <Button variant="outlined" color="primary" onClick={() => this.setState({ ...this.state, open: true})}>
-        Open form dialog
-      </Button>
-      <Dialog
-        // PaperComponent={PaperComponent}
-        aria-labelledby="draggable-dialog-title"
-      >
-        <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-          Subscribe
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={this.handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={this.handleClose} color="primary">
-            Subscribe
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div> */}
                 <Header className={this.props.id} />
                 <div className="flex-box flex-evenly form-zone animate-pop-in">
                     <div className="column-6 column-md-6">
-                        {/* <NewReview /> */}
+                        <Reviews />
                             <div className="flex-box flex-center">
                                 <Button color="primary" variant="contained" onClick={() => this.setState({...this.state, viewProducts : true})}>View Products</Button>
                             </div>
@@ -100,18 +62,33 @@ class ProductView extends Component {
                     </div>
                 {this.state.viewProducts && this.selectProduct &&<div className="flex-box flex-evenly column-4 column-md-8">
                 <div><h2>Products</h2></div>
+                  {this.props.state.review.reviews.map(results => results.results.map(result=>
+                  <div>
+                    <p>Rating ID: {result.review_id}</p>
+                    <p>Summary: {result.summary}</p>
+                    <p>Rating: <StarRating /></p>
+                    <img src={result.photos.url}/>
+                  </div>
+                    ))}
                     {this.props.state.product.products.map((ex, i) => {
                         return (
                             <div className="thumbnail" key={i}>
                     <h3>{ex.name}</h3>
+
                                 <p>Click On Photo To Enlarge</p>
                                 <img src={product} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`products-${i + 1}`} />
                                 <p onClick={() => this.setState({ ...this.state, open: true, image: ex })} >Click</p>
-
+                                <StarRating state={this.state}/>
                             </div>
                         )
                     })}
+
                 </div>}
+
+                <div>
+
+      </div>
+
 
                 <Dialog open={this.state.open} onClose={this.handleClose}>
                     <div className="dialog">
@@ -121,28 +98,21 @@ class ProductView extends Component {
                                                 <div className="flex-box flex-center">
                                 <Button color="primary" variant="contained" onClick={() => this.setState({...this.state, viewReview : true})}>Review This Product</Button>
                             </div>
-                    {/* <RatingsView  /> */}
-                    {/* <ProductList/> */}
-                    {/*
-                    <Review />
-                    <ResultsView />
-                    <DefaultReview /> */}
-
                     </div>
                     </div>
 
                 {this.state.viewReview && <div className="flex-box flex-evenly">
-                    {/* <Button onClick={this.navigateBack}>Back</Button>
-
-                    <Button color="primary" onClick={this.next}>Next</Button> */}
+                    <Button onClick={this.navigateBack}>Back</Button>
+                    <Button color="primary" onClick={this.next}>Next</Button>
                     <NewReview/>
                 </div>}
               </Dialog>
                   </div>
 
             </div>
-
-        )}}
+        )
+}
+}
 
 
 const mapStoreToProps = (state) => ({

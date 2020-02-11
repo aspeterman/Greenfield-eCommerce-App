@@ -124,3 +124,48 @@
 //     storage
 // });
 // export default connect(mapStorageToProps)(RatingsView);
+
+import React, {Component} from 'react'
+import StarRatingComponent from 'react-star-rating-component'
+import { connect } from 'react-redux';
+
+
+class RatingsView extends Component {
+  constructor(props) {
+    super(props)
+
+  }
+
+  render() {
+    // const {rating} = this.props.review.reviews;
+    return (
+      <div>
+        {/* {console.log(rating)} */}
+
+{/* <div className='heart' onClick={this.props.openModal}
+// value={this.props.reviews.results.review_id}
+img={this.props.reviews.results.photos.url}
+// title={this.props.results.rating}
+rating={this.props.reviews.results.rating}
+recratingcount={this.props.reviews.count}></div> */}
+<div>
+  {/* <img className='photo' src={this.props.state.reviews.results.url} alt=''/> */}
+  <div className='photo-padding'>
+    <div className='photo-description'>
+      {/* <div className='photo-title'>{this.props.review.reviews.count}</div> */}
+      {/* <div className='photo-description-description'>{this.props.reviews.body}</div> */}
+      {/* <div className='photo-price'>${this.props.recommendation.RecCost} per night</div> */}
+      {/* <StarRatingComponent starColor='red' className='photo-star-rating' name='rating' starCount={parseInt(this.props.reviews.results.rating)}/> */}
+      {/* <div className='photo-rating-count'>({parseInt(this.props.reviews.results.count)})</div> */}
+    </div>
+  </div>
+</div>
+</div>
+    )
+  }
+}
+
+const mapStoreToProps = (state) => ({
+  state
+});
+export default connect(mapStoreToProps)(RatingsView);

@@ -29,6 +29,7 @@ class Product extends Component
     render() {
 
         const { product } = this.props;
+        console.log(product)
 
         return (
             <div className="col-md-3">
