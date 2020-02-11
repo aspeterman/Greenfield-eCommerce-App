@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component,useState,useDispatch} from 'react'
+import { useSelector} from 'react-redux'
 import { connect } from 'react-redux';
 import AnswerModal from './AnswerModal.jsx'
 import initialState from '../../reducers/initialState'
@@ -75,15 +76,15 @@ import initialState from '../../reducers/initialState'
 // }
 // export default listStyle
 //++++++++++++++++++++++++++++++++++++++++++++++++++
-import { makeStyles,Button } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const moment = require('moment');
-
   var styles = {
     margin: '0px',
     width: '20px',
@@ -104,11 +105,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 export default function FolderList() {
-  const classes = useStyles();
+ 
+  const [count, setCount] = useState( {
+    everything:initialState.products[0].questions[0].results
+  }
+    );
+    
+    const State = useSelector(state => state);
+    const classes = useStyles();
+ 
+
   return (
+    
+    
     <div>
+    {console.log("state:",State)}
     <List className={classes.root}>
-    {initialState.products[0].questions ? initialState.products[0].questions[0].results.map((each) => { return(
+    {/* {console.log("State:",count)} */}
+    {initialState.products[0].questions ? initialState.products[0].questions[0].results.slice(0,2).map((each) => { return(
       <ListItem alignItems="flex-start">
       <ListItemText
      primary={`Q: ${each["question_body"]}`}
@@ -116,15 +130,15 @@ export default function FolderList() {
         <React.Fragment>
            { Object.keys(each["answers"]).map((num)=>{ return{id: num,value: each["answers"][num]['helpfulness']}}).sort(function (a, b) {
               return a.value - b.value}).reverse()
-          .map((idValue)=>idValue.id).map((every,x) =>
-          <Typography variant="subtitle1">
+          .map((idValue)=>idValue.id).slice(0,1).map((every,x) =>
+          <Typography>
          <Typography color="textPrimary" >A:</Typography>{`${each["answers"][every]["body"]}`}<br></br>
          {each["answers"][every]['photos'].length > 0?each["answers"][every]['photos'].map((photo,i)=>
-                  <ul style={styles}>
-                    {console.log("photo:",photo)}
+                  <ul style={styles} type='none'>
+                    {/* {console.log("photo:",photo)} */}
                   <li key ={i}><img src = {photo} alt="Smiley face" height="42" width="42"></img></li>
                   </ul>
-                  ):console.log('false')}
+                  ):console.log('')}
          <Typography  >{`by ${each["answers"][every]["answerer_name"]}, ${moment(each["answers"][every]["date"]).utc().format("YYYY-MM-DD hh:mm:ss A Z")} | helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]}) | `}<a href="#">Report</a></Typography>
          </Typography>
            )}
@@ -132,10 +146,7 @@ export default function FolderList() {
         </React.Fragment>
       }
     />
-        {/* <List> */}
-         <Divider variant="inset" component="li" />
-         {/* </List> */}
-      <a href="#">yes</a>({each["question_helpfulness"]})|<AnswerModal/>
+      <a onClick={(e)=>e.preventDefault(setCount(count => ({...count,question_helpfulness:1 })),console.log(count))}>yes</a>({each["question_helpfulness"]})|<AnswerModal/>
       </ListItem>
       )}): null}
     </List>

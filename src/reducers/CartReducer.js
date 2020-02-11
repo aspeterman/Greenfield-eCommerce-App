@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import { ADD_TO_CART, REMOVE_FROM_CART, CHECKOUT_REQUEST, CHECKOUT_SUCCESS, CHECKOUT_FAILURE } from '../actions/constants.js'
+// import { combineReducers } from 'redux'
+// import { ADD_TO_CART, REMOVE_FROM_CART, CHECKOUT_REQUEST, CHECKOUT_SUCCESS, CHECKOUT_FAILURE } from '../actions/constants.js'
 
 // const initialState = {
 //   checkoutStatus: {
@@ -49,10 +49,10 @@ import { ADD_TO_CART, REMOVE_FROM_CART, CHECKOUT_REQUEST, CHECKOUT_SUCCESS, CHEC
 //   }
 // }
 
-// export default combineReducers({
-//   checkoutStatus,
-//   quantityById,
-// })
+// // export default combineReducers({
+// //   checkoutStatus,
+// //   quantityById,
+// // })
 
 // export function getQuantity(state, productId) {
 //   return state.quantityById[productId] || 0
@@ -63,52 +63,52 @@ import { ADD_TO_CART, REMOVE_FROM_CART, CHECKOUT_REQUEST, CHECKOUT_SUCCESS, CHEC
 // }
 
 
-const initialState = {
-  cart: []
-};
+// // const initialState = {
+// //   cart: []
+// // };
 
-const cartReducer = (state = initialState, action) => {
+// const cartReducer = (state = initialState, action) => {
 
-    let cart = state.cart;
+//     let cart = state.cart;
 
-    switch(action.type) {
+//     switch(action.type) {
 
-        case 'ADD_TO_CART':
+//         case 'ADD_TO_CART':
 
-            cart.push(action.payload);
+//             cart.push(action.payload);
 
-            return {
-                ...state,
-                cart: cart
-            };
-        case 'UPDATE_CART_QUANTITY':
+//             return {
+//                 ...state,
+//                 cart: cart
+//             };
+//         case 'UPDATE_CART_QUANTITY':
 
-            let item = cart.find(item => item.product.id == action.payload.productId);
+//             let item = cart.find(item => item.product.id == action.payload.productId);
 
-            let newCart = cart.filter(item => item.product.id != action.payload.productId);
+//             let newCart = cart.filter(item => item.product.id != action.payload.productId);
 
-            item.quantity = action.payload.quantity;
+//             item.quantity = action.payload.quantity;
 
-            newCart.push(item);
+//             newCart.push(item);
 
-            return {
-                ...state,
-                cart: newCart
-            };
+//             return {
+//                 ...state,
+//                 cart: newCart
+//             };
 
-        case 'REMOVE_FROM_CART':
-            return {
-                ...state,
-                cart: cart.filter(item => item.product.id != action.payload.productId)
-            };
-            case 'CHOOSE_PRODUCT':
-              return {
-                ...state,
-                product_Id: state.product.product_Id
-              };
-        default:
-            return state;
-    }
-};
+//         case 'REMOVE_FROM_CART':
+//             return {
+//                 ...state,
+//                 cart: cart.filter(item => item.product.id != action.payload.productId)
+//             };
+//             case 'CHOOSE_PRODUCT':
+//               return {
+//                 ...state,
+//                 product_Id: state.product.product_Id
+//               };
+//         default:
+//             return state;
+//     }
+// };
 
-export default cartReducer;
+// export default cartReducer
