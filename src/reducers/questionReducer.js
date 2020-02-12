@@ -3,9 +3,10 @@ import axios from "axios"
 const initalstate = {
     loading:false,
     question:[],
+    review:[],
     error:'',
     count: 2
-    
+
 
 }
 
@@ -23,6 +24,17 @@ const initalstate = {
                    question: action.payload,
                    count: 2
                    }
+            case "FETCH_REVIEWS_REQUEST":
+            return{
+            ...state,
+            loading: true
+            }
+            case "FETCH_REVIEWS_SUCCESS":
+                    return{
+                    ...state,
+                    loading: false,
+                    reviews: action.payload
+                    }
                    case "Increment":
                     return{
                     ...state,
@@ -34,6 +46,6 @@ const initalstate = {
 
             default: return state
            }
-           
+
         }
 export default questionReducer

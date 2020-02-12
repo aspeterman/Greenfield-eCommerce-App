@@ -6,9 +6,9 @@ import productReducer from './ProductReducer.js'
 import reviewReducer from './reviewReducer.js'
 
 export default combineReducers({
-  product: productReducer,
+  product: questionReducer,
   //  cart: CartReducer,
-  question:questionReducer
-  // review: reviewReducer,
+  question:questionReducer,
+  review: reviewReducer,
   // review,
 });

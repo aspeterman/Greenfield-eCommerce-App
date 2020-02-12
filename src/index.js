@@ -1,11 +1,12 @@
 
 import App from './App.js';
-import configureStore from './store/store.js';
+// import configureStore from './store/store.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import  { unregister } from './serviceWorker';
-import {createStore} from 'redux';
+import {createStore} from 'redux'
+
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 import {createMuiTheme} from '@material-ui/core/styles';
@@ -27,24 +28,40 @@ const theme = createMuiTheme({
           }
       }
 })
-// const initalstate = {
-//     loading:false,
-//     question:[],
-//     error:''
+const initalstate = {
+    loading:false,
+    product: [],
+    question:[],
+    review: [],
+    error:''
 
-// }
+}
 
 const FETCH_USERS_REQUEST= 'FETCH_USERS_REQUEST'
+
 const FETCH_USERS_SUCCESS= 'FETCH_USERS_SUCCESS'
+const FETCH_REVIEWS_REQUEST = 'FETCH_REVIEWS_REQUEST'
+const FETCH_REVIEWS_SUCCESS = 'FETCH_REVIEWS_SUCCESS'
 const Fetch_User_Request= () => {
     return {
-        type: FETCH_USERS_REQUEST 
+        type: FETCH_USERS_REQUEST
     }
 }
 const Fetch_User_Success= question => {
     return {
         type: FETCH_USERS_SUCCESS,
         payload: question
+    }
+}
+const Fetch_Review_Request =() => {
+    return {
+    type: FETCH_REVIEWS_REQUEST,
+    }
+}
+const Fetch_Review_Success = review => {
+    return {
+    type: FETCH_REVIEWS_SUCCESS,
+    payload: review
     }
 }
 // const Reducer = (state = initalstate,action) => {
@@ -74,13 +91,26 @@ const fetchQA = ()=> {
     }
 
 }
+const fetchReview = ()=> {
+    return function(dispatch){
+        dispatch(Fetch_Review_Request())
+        // axios.get('http://52.26.193.201:3000/' + this.props.state.product.products.id + `/list?page=${this.state.page}&sort=${this.state.sort}`)
+        axios.get('http://52.26.193.201:3000/reviews/1/list')
+        .then(response =>{
+            console.log(response.data)
+            dispatch(Fetch_Review_Success(response.data))
+
+        })
+    }
+}
+
+
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 store.subscribe(()=> console.log(store.getState()))
+store.dispatch(fetchReview())
 store.dispatch(fetchQA())
 ReactDOM.render(<MuiThemeProvider theme={theme}><Provider store={store}><App /></Provider></MuiThemeProvider>, document.getElementById('root'));
 //  unregister();
 // store.dispatch({ type: 'Load' })
-
-
 
