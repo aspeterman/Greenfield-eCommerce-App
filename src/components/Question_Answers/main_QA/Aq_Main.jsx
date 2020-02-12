@@ -32,8 +32,7 @@ class Aq_Main extends Component {
             <List/>
             <div >
              <span>
-            <Button variant="contained" variant="outlined">more answered questions</Button>
-             <Modal/>
+           
              </span>
             {/* </ButtonGroup> */}
              </div>

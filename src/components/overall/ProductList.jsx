@@ -57,7 +57,7 @@ class ProductList extends Component
                 <div className="row">
 
                     {
-                        this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /><TableComponent /><br/></div> )
+                        // this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /><TableComponent /><br/></div> )
                     }
 
 
@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
 
     return {
         products: state.product.products,
-        cart: state.cart.cart
+        // cart: state.cart.cart
     }
 };
 

@@ -27,12 +27,12 @@ const theme = createMuiTheme({
           }
       }
 })
-const initalstate = {
-    loading:false,
-    question:[],
-    error:''
+// const initalstate = {
+//     loading:false,
+//     question:[],
+//     error:''
 
-}
+// }
 
 const FETCH_USERS_REQUEST= 'FETCH_USERS_REQUEST'
 const FETCH_USERS_SUCCESS= 'FETCH_USERS_SUCCESS'
@@ -65,7 +65,7 @@ const Fetch_User_Success= question => {
 const fetchQA = ()=> {
     return function(dispatch){
         dispatch(Fetch_User_Request())
-        axios.get("http://52.26.193.201:3000/products/list")
+        axios.get("http://52.26.193.201:3000/qa/1")
         .then(response =>{
             console.log(response.data)
             dispatch(Fetch_User_Success(response.data))

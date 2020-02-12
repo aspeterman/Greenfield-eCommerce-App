@@ -25,12 +25,12 @@ class App extends Component {
 
       <header className="App-header">
       </header>
-      <Home />
+      {/* <Home /> */}
       <ProductList />
     {/* <Reviews /> */}
     <RatingsView />
       {/* <ProductView /> */}
-      <Cart />
+      {/* <Cart /> */}
       <Aq/>
 
     </div>
