@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Slider from "react-slick";
 import ProductView from './ProductView.jsx'
 import { connect } from 'react-redux';
-import Reviews from '../Reviews/review.jsx'
+// import Reviews from '../Reviews/review.jsx'
 
 
 class Carousel extends Component {
@@ -19,9 +19,9 @@ class Carousel extends Component {
     return (
          <div className="container">
           <Slider {...settings}>
-            {this.props.state.review.reviews.map(rec => {
+            {/* {this.props.state.review.reviews.map(rec => {
               return <Reviews openModal={this.props.openModal} reviews={rec}/>
-            })}
+            })} */}
           </Slider>
         </div>
     )

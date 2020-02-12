@@ -20,8 +20,19 @@ const initalstate = {
                    loading: false,
                    question: action.payload
                    }
+            case "FETCH_REVIEWS_REQUEST":
+            return{
+            ...state,
+            loading: true
+            }
+            case "FETCH_REVIEWS_SUCCESS":
+                    return{
+                    ...state,
+                    loading: false,
+                    reviews: action.payload
+                    }
             default: return state
            }
-           
+
         }
 export default questionReducer

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Dialog } from '@material-ui/core';
-import Header from './Header';
-import RatingsView from '../Reviews/ratingsView.jsx'
-import Reviews from '../Reviews/review.jsx'
-import ResultsView from '../Reviews/results/resultsView.jsx'
-import NewReview from '../Reviews/newReview';
+// import Reviews from '../Reviews/review.jsx'
+// import ResultsView from '../Reviews/results/resultsView.jsx'
+// import NewReview from '../Reviews/newReview';
 
-import StarRating from '../Reviews/ratingSymbol'
+// import StarRating from '../Reviews/ratingSymbol'
 
 
 class ProductView extends Component {
@@ -20,9 +18,13 @@ class ProductView extends Component {
             rating: 0
         }
         this.selectProduct = this.selectProduct.bind(this)
+        this.changeRate = this.changeRate.bind(this)
     }
 
-
+    changeRate(name, value) {
+      this.props.change(name, value) // function provided by redux-form
+      this.setState({ starRating: value })
+    }
     handleClose = () => {
         this.setState({
             ...this.state,
@@ -43,18 +45,19 @@ class ProductView extends Component {
 
     render() {
       // const { product } = this.props;
-      const {product} = this.props.state.product.products.map(results => results.results.map(x => x.photos.map(y=>y.url)))
+      // const {product} = this.props.state.product.products.map(results => results.results.map(x => x.photos.map(y=>y.url)))
       console.log(this.props.state.product.products.map(results => results.results.map(x => x.photos.map(y=>y.url))))
-      const {review} = this.props.state.review.reviews.map(results => results.results.map(result=>result.photos.map(x=>x.url)))
-      console.log(this.props.state.review.reviews.map(results => results.results.map(result=>result)))
+      console.log(this.props.state.review.review)
+      // const {review} = this.props.state.review.reviews.map(results => results.results.map(result=>result.photos.map(x=>x.url)))
+      // const {review} = this.props.state.review.review
 
         return (
 
             <div className="main">
-                <Header className={this.props.id} />
+
                 <div className="flex-box flex-evenly form-zone animate-pop-in">
                     <div className="column-6 column-md-6">
-                        <Reviews />
+                        {/* <Reviews /> */}
                             <div className="flex-box flex-center">
                                 <Button color="primary" variant="contained" onClick={() => this.setState({...this.state, viewProducts : true})}>View Products</Button>
                             </div>
@@ -62,23 +65,27 @@ class ProductView extends Component {
                     </div>
                 {this.state.viewProducts && this.selectProduct &&<div className="flex-box flex-evenly column-4 column-md-8">
                 <div><h2>Products</h2></div>
-                  {this.props.state.review.reviews.map(results => results.results.map(result=>
+                  {/* {this.props.state.review.review.map(results => results.results.map(result=>
                   <div>
-                    <p>Rating ID: {result.review_id}</p>
+                    <p>Rating ID: {result.product}</p>
                     <p>Summary: {result.summary}</p>
                     <p>Rating: <StarRating /></p>
                     <img src={result.photos.url}/>
                   </div>
-                    ))}
+                    ))} */}
                     {this.props.state.product.products.map((ex, i) => {
                         return (
                             <div className="thumbnail" key={i}>
                     <h3>{ex.name}</h3>
 
                                 <p>Click On Photo To Enlarge</p>
-                                <img src={product} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`products-${i + 1}`} />
+                                {/* <img src={product} onClick={() => this.setState({ ...this.state, open: true, image: ex })} alt={`products-${i + 1}`} /> */}
                                 <p onClick={() => this.setState({ ...this.state, open: true, image: ex })} >Click</p>
-                                <StarRating state={this.state}/>
+                                {/* <StarRating state={this.state}/> */}
+                                {/* <StarRating
+                                  onChange={(value) => { this.changeRate("name", value) } }
+                                  initialRate={ this.state.starRating }
+                                /> */}
                             </div>
                         )
                     })}
@@ -94,7 +101,7 @@ class ProductView extends Component {
                     <div className="dialog">
 
                     <div><h3>photo</h3>
-                    <img className="full-img" src={product} alt="demo"/>
+                    {/* <img className="full-img" src={product} alt="demo"/> */}
                                                 <div className="flex-box flex-center">
                                 <Button color="primary" variant="contained" onClick={() => this.setState({...this.state, viewReview : true})}>Review This Product</Button>
                             </div>
@@ -104,7 +111,7 @@ class ProductView extends Component {
                 {this.state.viewReview && <div className="flex-box flex-evenly">
                     <Button onClick={this.navigateBack}>Back</Button>
                     <Button color="primary" onClick={this.next}>Next</Button>
-                    <NewReview/>
+                    {/* <NewReview/> */}
                 </div>}
               </Dialog>
                   </div>

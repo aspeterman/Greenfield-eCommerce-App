@@ -38,8 +38,7 @@ import { connect } from 'react-redux';
 import { Button, Dialog } from '@material-ui/core';
 import TableComponent from '../Reviews/results/table.jsx'
 import {addToCart, chooseProduct} from "../../actions/actions";
-import NewReview from '../Reviews/newReview.jsx'
-import Header from './Header.jsx'
+// import NewReview from '../Reviews/newReview.jsx'
 
 class ProductList extends Component
 

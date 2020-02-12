@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NewReview from '../Reviews/newReview.jsx'
+// import NewReview from '../Reviews/newReview.jsx'
 class Product extends Component
 {
     state = {
@@ -42,7 +42,7 @@ class Product extends Component
                         <p className="slogan">{product.slogan}</p>
                         <p className="desc">{product.description}</p>
                         <p className="category">{product.category}</p>
-                        <div><NewReview/></div>
+                        {/* <div><NewReview/></div> */}
                     </figcaption>
                     <div className="bottom-wrap">
 
