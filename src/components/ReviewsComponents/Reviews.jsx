@@ -28,44 +28,7 @@ class Reviews extends React.Component {
     this.submitReview = this.submitReview.bind(this);
   }
 
-  // getReviews() {
-  //   fetch(url + this.props.productInfo.id + `/list?page=${this.state.page}&sort=${this.state.sort}`)
-  //     .then((response) => {
-  //       // console.log(this.state);
-  //       return response.json();
-  //     })
-  //     .then((result) => {
-  //       if (!this.state.reviews.length) {
-  //         this.setState({
-  //           reviews: result.results
-  //         }, () => { console.log('this.state.reviews', this.state.reviews)} );
-  //       } else if (JSON.stringify(this.state.reviews) !== JSON.stringify(result.results)) {
-  //         this.setState({
-  //           reviews: this.state.reviews.concat(result.results)
-  //         }, () => {
-  //         })
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     })
-  // }
 
-  // getMeta() {
-  //   fetch(url + this.props.productInfo.id + `/meta`)
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((result) => {
-  //       this.setState({
-  //         meta: result
-  //       }, () => {
-  //       })
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     })
-  // }
 
   markHelpful(rid) {
     fetch(url + 'helpful/' + rid, {

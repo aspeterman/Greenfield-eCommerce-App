@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRatingComponent from 'react-star-rating-component'
+// import StarRatingComponent from 'react-star-rating-component'
 // returns undefined if there is no rating
 
 class StarRating extends React.Component {
@@ -57,7 +57,7 @@ class StarRating extends React.Component {
             //     this.props.update({ currentRating: i + 1 })
             //   }
             // }}></img>
-            return <StarRatingComponent max={5}/>
+            // return <StarRatingComponent max={5}/>
           })
         }
       </span>
