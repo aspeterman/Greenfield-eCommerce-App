@@ -64,19 +64,23 @@ export function getCategories(data) {
 // }
 
 
-export const fetchReviewsSuccess = (reviews) => {
+export const fetchReviewsSuccess = (review) => {
   return {
     type: 'FETCH_REVIEWS',
-    reviewList: reviews,
+    // reviews: reviews,
+    payload: {
+      review,
+      quantity: 1
+  }
     // reviews: json.data.children.map(child => child.data),
-    receivedAt: Date.now()
+    // receivedAt: Date.now()
   }
 }
 
-export const fetchReviewsPending = (reviews) => {
+export const fetchReviewsPending = (pending) => {
   return {
       type: 'FETCH_REVIEWS_PENDING',
-      reviewList: reviews
+      isLoading: true
   }
 }
 
@@ -86,6 +90,9 @@ export const fetchReviewsError = (error) => {
       error: error
   }
 }
+
+
+
 export const addToCart = (product) => {
 return {
   type: 'ADD_TO_CART',
@@ -95,6 +102,7 @@ return {
   }
 }
 }
+
 
 export const removeFromCart = (productId) => {
 
@@ -124,4 +132,12 @@ export const selectProduct = (productId) => {
       productId: productId
     }
   }
+}
+
+export function getData() {
+  return fetch('http://52.26.193.201:3000/reviews/list')
+    .then(response => response.json())
+    .then(json => {
+      return { type: "DATA_LOADED", payload: json };
+    });
 }
