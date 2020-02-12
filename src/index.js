@@ -1,6 +1,6 @@
 
 import App from './App.js';
-import configureStore from './store/store.js';
+// import configureStore from './store/store.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -38,6 +38,7 @@ const initalstate = {
 }
 
 const FETCH_USERS_REQUEST= 'FETCH_USERS_REQUEST'
+
 const FETCH_USERS_SUCCESS= 'FETCH_USERS_SUCCESS'
 const FETCH_REVIEWS_REQUEST = 'FETCH_REVIEWS_REQUEST'
 const FETCH_REVIEWS_SUCCESS = 'FETCH_REVIEWS_SUCCESS'
@@ -81,7 +82,7 @@ const Fetch_Review_Success = review => {
 const fetchQA = ()=> {
     return function(dispatch){
         dispatch(Fetch_User_Request())
-        axios.get("http://52.26.193.201:3000/products/list")
+        axios.get("http://52.26.193.201:3000/qa/1")
         .then(response =>{
             console.log(response.data)
             dispatch(Fetch_User_Success(response.data))

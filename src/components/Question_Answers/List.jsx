@@ -1,8 +1,10 @@
-import React, { Component,useState,useDispatch} from 'react'
+import React, { Component,useState,useCallback} from 'react'
 import { useSelector} from 'react-redux'
 import { connect } from 'react-redux';
 import AnswerModal from './AnswerModal.jsx'
 import initialState from '../../reducers/initialState'
+import Modal from './Modal.jsx'
+import { useDispatch } from 'react-redux'
 //Class component
 //___________________________________________
 // class List extends Component {
@@ -84,6 +86,13 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+// const Incrementing = useCallback(
+//   () => dispatch({ type: 'increment-counter' }),
+//   [dispatch]
+//)
+
+// const increase = () => ({ type: "INCREASE_COUNTER" });
+
 const moment = require('moment');
   var styles = {
     margin: '0px',
@@ -104,25 +113,19 @@ const useStyles = makeStyles(theme => ({
     fontSize: 5,
   },
 }));
-export default function FolderList() {
- 
-  const [count, setCount] = useState( {
-    everything:initialState.products[0].questions[0].results
-  }
-    );
-    
+
+export default function ListItems() { 
     const State = useSelector(state => state);
     const classes = useStyles();
- 
+    const dispatch = useDispatch()
 
   return (
     
-    
     <div>
-    {console.log("state:",State)}
+    {console.log("state:",State.question.count)}
     <List className={classes.root}>
     {/* {console.log("State:",count)} */}
-    {initialState.products[0].questions ? initialState.products[0].questions[0].results.slice(0,2).map((each) => { return(
+    {State.question.question.results ? State.question.question.results.slice(0,State.question.count).map((each,i) => { return(
       <ListItem alignItems="flex-start">
       <ListItemText
      primary={`Q: ${each["question_body"]}`}
@@ -139,17 +142,28 @@ export default function FolderList() {
                   <li key ={i}><img src = {photo} alt="Smiley face" height="42" width="42"></img></li>
                   </ul>
                   ):console.log('')}
-         <Typography  >{`by ${each["answers"][every]["answerer_name"]}, ${moment(each["answers"][every]["date"]).utc().format("YYYY-MM-DD hh:mm:ss A Z")} | helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]}) | `}<a href="#">Report</a></Typography>
+         <Typography  >{`by ${each["answers"][every]["answerer_name"]}, ${moment(each["answers"][every]["date"]).utc().format("YYYY-MM-DD hh:mm:ss")} | helpful? `}
+         <a id = {`yesAButton${i}`} onClick={(e)=>e.preventDefault(
+         document.getElementById(`yesAButton${i}`).text = `yes(${Number(each["answers"][every]["helpfulness"])+1})`
+         )}>yes({each["answers"][every]["helpfulness"]})</a>
+          |<a href="#">Report</a></Typography>
          </Typography>
            )}
            {Object.keys(each["answers"]).length > 0? <a href="#">Load more answers</a>:<p>no answers yet</p>}
         </React.Fragment>
       }
     />
-      <a onClick={(e)=>e.preventDefault(setCount(count => ({...count,question_helpfulness:1 })),console.log(count))}>yes</a>({each["question_helpfulness"]})|<AnswerModal/>
+      <a id = {`yesButton${i}`} onClick={(e)=>e.preventDefault(
+         document.getElementById(`yesButton${i}`).text = `yes(${Number(each["question_helpfulness"])+1})`
+      )}>yes({each["question_helpfulness"]})</a>|<AnswerModal/>
       </ListItem>
       )}): null}
+
     </List>
+    <Button variant="contained" variant="outlined" onClick = {
+   () => dispatch({ type: "Increment" })
+     }>more answered questions</Button>
+    <Modal/>
     </div>
   );
 }

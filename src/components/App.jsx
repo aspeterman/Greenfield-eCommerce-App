@@ -3,7 +3,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import Overview from './overview/Overview.jsx';
-import defaultProduct from './defaultProduct.js';
 
 
 class Apps extends React.Component {
@@ -14,7 +13,7 @@ class Apps extends React.Component {
       searchResults: null,
       searchTerm: '',
       showSearchResults: false,
-      selectedProduct: defaultProduct
+      selectedProduct: ''
     }
     this.onChangeProducts = this.onChangeProducts.bind(this);
     this.getProducts = this.getProducts.bind(this);

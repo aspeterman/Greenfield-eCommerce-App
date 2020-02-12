@@ -4,7 +4,9 @@ const initalstate = {
     loading:false,
     question:[],
     review:[],
-    error:''
+    error:'',
+    count: 2
+
 
 }
 
@@ -19,7 +21,8 @@ const initalstate = {
                    return{
                    ...state,
                    loading: false,
-                   question: action.payload
+                   question: action.payload,
+                   count: 2
                    }
             case "FETCH_REVIEWS_REQUEST":
             return{
@@ -32,6 +35,15 @@ const initalstate = {
                     loading: false,
                     reviews: action.payload
                     }
+                   case "Increment":
+                    return{
+                    ...state,
+                    loading: false,
+                    count: state.count + 1
+                    }
+
+
+
             default: return state
            }
 
