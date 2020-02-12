@@ -8,10 +8,10 @@ import RatingsView from './components/Reviews/ratingsView.jsx'
 import NewReview from './components/Reviews/newReview.jsx'
 // import Reviews from './components/Reviews/review.jsx'
 import ProductView from './components/overall/ProductView.jsx'
-import Header from './components/overall/Header.jsx'
+import Header from './components/overview/Header.jsx'
 import ProductList from './components/overall/ProductList.jsx'
 // import Cart from './components/overall/Cart.jsx'
-import Carousel from './components/overall/Carousel'
+// import Carousel from './components/overview/Carousel'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ class App extends Component {
       <header className="App-header">
       <Header />
       </header>
-      <Carousel />
+      {/* <Carousel /> */}
       {/* <ProductList /> */}
       {/* <NewReview /> */}
     {/* <Reviews /> */}

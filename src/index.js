@@ -30,6 +30,7 @@ const theme = createMuiTheme({
 })
 const initalstate = {
     loading:false,
+    product: [],
     question:[],
     review: [],
     error:''
@@ -62,21 +63,21 @@ const Fetch_Review_Success = review => {
     payload: review
     }
 }
-const Reducer = (state = initalstate,action) => {
- switch(action.type){
- case FETCH_USERS_REQUEST:
-     return{
-     ...state,
-     loading: true
-     }
-     case FETCH_USERS_SUCCESS:
-            return{
-            ...state,
-            loading: false,
-            question: action.payload,
-            }
-    }
- }
+// const Reducer = (state = initalstate,action) => {
+//  switch(action.type){
+//  case FETCH_USERS_REQUEST:
+//      return{
+//      ...state,
+//      loading: true
+//      }
+//      case FETCH_USERS_SUCCESS:
+//             return{
+//             ...state,
+//             loading: false,
+//             question: action.payload,
+//             }
+//     }
+//  }
 const fetchQA = ()=> {
     return function(dispatch){
         dispatch(Fetch_User_Request())

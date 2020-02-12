@@ -3,6 +3,7 @@ import axios from "axios"
 const initalstate = {
     loading:false,
     question:[],
+    review:[],
     error:''
 
 }

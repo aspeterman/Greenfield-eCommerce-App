@@ -9,6 +9,6 @@ export default combineReducers({
   product: questionReducer,
   //  cart: CartReducer,
   question:questionReducer,
-  review: questionReducer,
+  review: reviewReducer,
   // review,
 });
