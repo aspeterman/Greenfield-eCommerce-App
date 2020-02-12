@@ -3,7 +3,9 @@ import axios from "axios"
 const initalstate = {
     loading:false,
     question:[],
-    error:''
+    error:'',
+    count: 2
+    
 
 }
 
@@ -18,8 +20,18 @@ const initalstate = {
                    return{
                    ...state,
                    loading: false,
-                   question: action.payload
+                   question: action.payload,
+                   count: 2
                    }
+                   case "Increment":
+                    return{
+                    ...state,
+                    loading: false,
+                    count: state.count + 1
+                    }
+
+
+
             default: return state
            }
            

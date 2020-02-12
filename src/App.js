@@ -26,11 +26,11 @@ class App extends Component {
       <header className="App-header">
       <Header />
       </header>
-      {/* <ProductList /> */}
-      {/* <NewReview /> */}
-    {/* <Reviews /> */}
-    {/* <DefaultReview /> */}
-    {/* <RatingsView /> */}
+      <ProductList /> */}
+      <NewReview />
+    <Reviews />
+    <DefaultReview />
+     <RatingsView />
       <ProductView />
       <Cart />
       <Aq/>

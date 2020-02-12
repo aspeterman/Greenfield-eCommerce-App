@@ -91,8 +91,7 @@ const mapStateToProps = (state) => {
 
     return {
         products: state.product.products,
-        cart: state.cart.cart,
-        review: state.review.reviews
+        // cart: state.cart.cart
     }
 };
 
