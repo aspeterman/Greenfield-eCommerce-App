@@ -23,16 +23,16 @@ class App extends Component {
 
     <div className="App">
 
-      <header className="App-header">
-      <Header />
-      </header>
-      <ProductList /> */}
+       <header className="App-header"> 
+       <Header /> 
+     </header> 
+     <ProductList /> 
       <NewReview />
     <Reviews />
     <DefaultReview />
-     <RatingsView />
-      <ProductView />
-      <Cart />
+     <RatingsView /> 
+     <ProductView /> 
+       <Cart /> 
       <Aq/>
 
     </div>

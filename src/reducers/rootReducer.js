@@ -7,8 +7,8 @@ import reviewReducer from './reviewReducer.js'
 
 export default combineReducers({
   product: productReducer,
-  //  cart: CartReducer,
-  question:questionReducer
-  // review: reviewReducer,
-  // review,
+   cart: CartReducer,
+  question:questionReducer,
+  review: reviewReducer,
+// review,
 });
