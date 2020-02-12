@@ -26,22 +26,13 @@ class App extends Component {
       <header className="App-header">
       <Header />
       </header>
-<<<<<<< HEAD
-      {/* <Home /> */}
-      <ProductList />
-    {/* <Reviews /> */}
-    <RatingsView />
-      {/* <ProductView /> */}
-      {/* <Cart /> */}
-=======
-      {/* <ProductList /> */}
-      {/* <NewReview /> */}
-    {/* <Reviews /> */}
-    {/* <DefaultReview /> */}
-    {/* <RatingsView /> */}
+      <ProductList /> */}
+      <NewReview />
+    <Reviews />
+    <DefaultReview />
+     <RatingsView />
       <ProductView />
       <Cart />
->>>>>>> ed61ea556751c1c65961966264a3de5fb41e7cc9
       <Aq/>
 
     </div>

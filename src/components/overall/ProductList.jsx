@@ -58,13 +58,6 @@ class ProductList extends Component
 
                 <div className="row">
 
-<<<<<<< HEAD
-                    {
-                        // this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /><TableComponent /><br/></div> )
-                    }
-
-
-=======
                     {/* {
                         this.props.products.map(product => <div><Product product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} />  <p><NewReview onClose={this.handleClose}/>Open</p><br/></div>
                         )
@@ -88,7 +81,6 @@ class ProductList extends Component
                         {/* </Dialog> */}
                     </div>
                                   </div>
->>>>>>> ed61ea556751c1c65961966264a3de5fb41e7cc9
                 </div>
             </div>
 
@@ -99,12 +91,7 @@ const mapStateToProps = (state) => {
 
     return {
         products: state.product.products,
-<<<<<<< HEAD
         // cart: state.cart.cart
-=======
-        cart: state.cart.cart,
-        review: state.review.reviews
->>>>>>> ed61ea556751c1c65961966264a3de5fb41e7cc9
     }
 };
 
