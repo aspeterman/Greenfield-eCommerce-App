@@ -5,8 +5,8 @@ const initalstate = {
     question:[],
     review:[],
     error:'',
-    count: 2
-
+    count: 2,
+    Acount: 1
 
 }
 
@@ -41,6 +41,12 @@ const initalstate = {
                     loading: false,
                     count: state.count + 1
                     }
+                    case "IncrementAnswer":
+                        return{
+                        ...state,
+                        loading: false,
+                        Acount: state.Acount + 1
+                        }
 
 
 

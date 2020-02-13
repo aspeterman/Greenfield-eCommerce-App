@@ -5,79 +5,6 @@ import AnswerModal from './AnswerModal.jsx'
 import initialState from '../../reducers/initialState'
 import Modal from './Modal.jsx'
 import { useDispatch } from 'react-redux'
-//Class component
-//___________________________________________
-// class List extends Component {
-//     render() {
-//     //  const reactState = useSelector(state => state)
-//         return (
-//         <div>
-//           <ul id='question' >
-//             {initialState.products[0].questions ? initialState.products[0].questions[0].results.map((each) => { return(
-//           <li>{`Q: ${each["question_body"]}`}&nbsp;&nbsp;
-//           <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<AnswerModal/><br></br>
-//               <ul id='answer'>
-//               {Object.keys(each["answers"]).map((every,i) =>
-//                <li key ={i}>{`A: ${each["answers"][every]["body"]}`}<br></br>
-//               {console.log(each["answers"][every]['photos'])}
-//               {each["answers"][every]['photos'].length > 0?each["answers"][every]['photos'].map((photo,i)=>
-//               <ul>
-//                 {console.log("photo:",photo)}
-//               {/* <li key ={i}><image  src={photo} alt="Smiley face" height="42" width="42"></image>/></li> */}
-//               <li key ={i}><img src = {photo} alt="Smiley face" height="42" width="42"></img></li>
-//               </ul>
-//               ):console.log('false')}
-//               {`by${each["answers"][every]["date"]},${each["answers"][every]["answerer_name"]}| helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]})|`}<a href="#">Report</a><br></br></li>
-//               )}
-//               <a href="#">Load more answers</a><br></br>
-//               </ul>
-//         </li>
-//             )}): null}
-//           </ul>
-//           {/* <p>{this.state? this.state.reviews: null}</p> */}
-//         </div>
-//         )
-//     }
-// }
-// export default List;
-//___________________________________________
-//a function stylizing functional component
-//___________________________________________
-// function listStyle() {
-//   var styles = {
-//     margin: '0px',
-//     width: '20px',
-//     height: '10px',
-//     display: 'table-cell',
-//   };
-//   return (
-//     <div>
-//           <ul id='question' >
-//             {initialState.products[0].questions ? initialState.products[0].questions[0].results.map((each) => { return(
-//           <li>{`Q: ${each["question_body"]}`}&nbsp;&nbsp;
-//           <a href="#">yes</a>{`(${each["question_helpfulness"]})| `}<AnswerModal/><br></br>
-//               <ul id='answer'>
-//               {Object.keys(each["answers"]).map((every,i) =>
-//                <li key ={i}>{`A: ${each["answers"][every]["body"]}`}<br></br>
-//               {console.log(each["answers"][every]['photos'])}
-//               {each["answers"][every]['photos'].length > 0?each["answers"][every]['photos'].map((photo,i)=>
-//               <ul style={styles}>
-//                 {console.log("photo:",photo)}
-//               <li key ={i}><img src = {photo} alt="Smiley face" height="42" width="42"></img></li>
-//               </ul>
-//               ):console.log('false')}
-//               {`by${each["answers"][every]["date"]},${each["answers"][every]["answerer_name"]}| helpful? `}<a href="/">yes</a>{`(${each["answers"][every]["helpfulness"]})|`}<a href="#">Report</a><br></br></li>
-//               )}
-//               <a href="#">Load more answers</a><br></br>
-//               </ul>
-//         </li>
-//             )}): null}
-//           </ul>
-//         </div>
-//   )
-// }
-// export default listStyle
-//++++++++++++++++++++++++++++++++++++++++++++++++++
 import { makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -114,15 +41,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ListItems() { 
+export default function ListItems() {
     const State = useSelector(state => state);
     const classes = useStyles();
     const dispatch = useDispatch()
 
   return (
-    
+
     <div>
-    {console.log("state:",State.question.count)}
+    {console.log("state:",State.question.Acount)}
     <List className={classes.root}>
     {/* {console.log("State:",count)} */}
     {State.question.question.results ? State.question.question.results.slice(0,State.question.count).map((each,i) => { return(
@@ -133,9 +60,9 @@ export default function ListItems() {
         <React.Fragment>
            { Object.keys(each["answers"]).map((num)=>{ return{id: num,value: each["answers"][num]['helpfulness']}}).sort(function (a, b) {
               return a.value - b.value}).reverse()
-          .map((idValue)=>idValue.id).slice(0,1).map((every,x) =>
+          .map((idValue)=>idValue.id).slice(0,State.question.Acount).map((every,x) =>
           <Typography>
-         <Typography color="textPrimary" >A:</Typography>{`${each["answers"][every]["body"]}`}<br></br>
+         {`A: ${each["answers"][every]["body"]}`}<br></br>
          {each["answers"][every]['photos'].length > 0?each["answers"][every]['photos'].map((photo,i)=>
                   <ul style={styles} type='none'>
                     {/* {console.log("photo:",photo)} */}
@@ -146,10 +73,16 @@ export default function ListItems() {
          <a id = {`yesAButton${i}`} onClick={(e)=>e.preventDefault(
          document.getElementById(`yesAButton${i}`).text = `yes(${Number(each["answers"][every]["helpfulness"])+1})`
          )}>yes({each["answers"][every]["helpfulness"]})</a>
-          |<a href="#">Report</a></Typography>
+          |<a href="#" onClick = {(e)=> e.preventDefault()}>Report</a></Typography>
          </Typography>
            )}
-           {Object.keys(each["answers"]).length > 0? <a href="#">Load more answers</a>:<p>no answers yet</p>}
+           {Object.keys(each["answers"]).length > 0?
+
+    <Button id = {`Answer${i}`} onClick={() => dispatch({ type: "IncrementAnswer"})}>Load more answers</Button>
+          //  <Button variant="contained" variant="outlined" onClick = {
+          //   () => dispatch({ type: "IncrementAnswer"  })
+          //     }>Load more answers</Button>
+           :<p>no answers yet</p>}
         </React.Fragment>
       }
     />
