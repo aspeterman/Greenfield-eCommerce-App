@@ -31,7 +31,7 @@ class App extends Component {
     {/* <RatingsView /> */}
       {/* <ProductView /> */}
       {/* <Cart /> */}
-      {/* <Aq/> */}
+      <Aq/>
       <Apps />
 
     </div>
