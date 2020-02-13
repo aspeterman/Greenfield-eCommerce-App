@@ -103,6 +103,13 @@ return {
 }
 }
 
+export const addProductToCart = product => {
+  return {
+      type: 'ADD_PRODUCT_TO_CART',
+      payload: product
+  }
+};
+
 
 export const removeFromCart = (productId) => {
 
@@ -134,10 +141,3 @@ export const selectProduct = (productId) => {
   }
 }
 
-export function getData() {
-  return fetch('http://52.26.193.201:3000/reviews/list')
-    .then(response => response.json())
-    .then(json => {
-      return { type: "DATA_LOADED", payload: json };
-    });
-}
